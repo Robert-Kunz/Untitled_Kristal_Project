@@ -28,7 +28,11 @@ function character:init()
     self.xact_name = "HW-action"
 
     -- Spells
-    -- TBA
+    self:addSpell("Nectar")
+    self:addSpell("Spicy_Nectar")
+    self:addSpell("Vanish")
+    self:addSpell("Mitite_toss")
+    self:addSpell("Eggcify")
     -- Current health (saved to the save file)
     self.health = 50
 

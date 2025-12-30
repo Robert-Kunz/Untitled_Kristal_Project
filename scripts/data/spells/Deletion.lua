@@ -14,30 +14,30 @@ function spell:init()
     self.description = "You wouldn't... \nuse this spell... right?"
 
     -- TP cost
-    self.cost = 0   
+    self.cost = 100
 
     -- Target mode (ally, party, enemy, enemies, or none)
     self.target = "enemies"
 
     -- Tags that apply to this spell
-    self.tags = {"Fatal"}
+    self.tags = { "Fatal" }
 end
 
 function spell:getCastMessage(user, target)
-    if Game.battle:getEnemyBattler("Fifty") then
-    return nil
+    if Game.battle:getEnemyBattler("Fifty") or Game.battle:getEnemyBattler("Fifty_Birthday") then
+        return nil
     end
-    return ("* "+ user.chara:getName() + " cast Deletion!")
+    return ("* " + user.chara:getName() + " cast Deletion!")
 end
 
 function spell:onCast(user, target)
-    if Game.battle:getEnemyBattler("Fifty") then
-        Game.battle:startActCutscene("Deletion", "Deletion")
+    if Game.battle:getEnemyBattler("Fifty") or Game.battle:getEnemyBattler("Fifty_Birthday") then
+        Game.battle:startActCutscene("Fifty", "Deletion")
     else
-    local object = SnowGraveSpell(user)
-    object.damage = self:getDamage(user, target)
-    Game.battle:addChild(object)
-    return false
+        local object = SnowGraveSpell(user)
+        object.damage = self:getDamage(user, target)
+        Game.battle:addChild(object)
+        return false
     end
 end
 

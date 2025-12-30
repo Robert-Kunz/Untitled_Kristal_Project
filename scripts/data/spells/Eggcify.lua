@@ -25,7 +25,8 @@ end
 
 function spell:getCastMessage(user, target)
     local message = super.getCastMessage(self, user, target)
-    if target.id == "Fifty_Birthday" or "Fifty" then
+    if target.id == "Fifty_Birthday" or target.id == "Fifty" then
+        Kristal.Console:log(target.id)
         return message .. "\n[wait:0.25s]* But Fifty didn't give in."
     elseif target.tired then
         return message
@@ -38,7 +39,8 @@ function spell:getCastMessage(user, target)
 end
 
 function spell:onCast(user, target)
-    if target.tired and not target.id == "Fifty_Birthday" or not target.id == "Fifty" then
+    Kristal.Console:log(target.id)
+    if target.tired and not (target.id == "Fifty_Birthday" or target.id == "Fifty") then
         target:spare(true)
         if not Game:getConfig("oldPacify") then
             Assets.playSound("spell_pacify")

@@ -18,7 +18,7 @@ function item:init()
     -- Menu description
     self.description = "An empty Bottle, that has the possibility to be filled with anything. Doesn't do anything alone"
 
--- Default shop price (sell price is halved)
+    -- Default shop price (sell price is halved)
     self.price = 50
     -- Whether the item can be sold
     self.can_sell = false
@@ -44,7 +44,8 @@ function item:init()
         susie = "You expect me to eat this?",
         ralsei = "This is just glass...",
         Fifty = "You still have to fill this, idiot",
-        SD = "Ahh... perfect, an empty Bottle."
+        SD = "Ahh... perfect, an empty Bottle.",
+        HW = "...huh?"
     }
 end
 

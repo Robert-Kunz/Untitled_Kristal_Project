@@ -1,38 +1,38 @@
--- Instead of Item, create a HealItem, a convenient class for consumable healing items
-local item, super = Class(HealItem, "Potion")
+local item, super = Class(HealItem, "Cake")
 
 function item:init()
     super.init(self)
 
     -- Display name
-    self.name = "Healing P."
+    self.name = "Cake"
     -- Name displayed when used in battle (optional)
-    self.use_name = "Instant Health II Potion"
+    self.use_name = "Cake"
 
     -- Item type (item, key, weapon, armor)
     self.type = "item"
 
     -- Battle description
-    self.effect = "Medicine"
+    self.effect = "It's a\nLIE"
     -- Shop description
-    self.shop = "Medicine"
+    self.shop = "Yum"
     -- Menu description
-    self.description = "A Pinkish liquid.\nSmells like Watermelons. +60HP"
+    self.description = "The cake is a lie.\nA few candles are lit..."
 
     -- Amount healed (HealItem variable)
-    self.heal_amount = 60
+    self.heal_amount = math.huge
+    self.heal_amount_other = 40
 
     -- Default shop price (sell price is halved)
-    self.price = 500
+    self.price = 0
     -- Whether the item can be sold
-    self.can_sell = true
+    self.can_sell = false
 
     -- Consumable target mode (ally, party, enemy, enemies, or none)
     self.target = "ally"
     -- Where this item can be used (world, battle, all, or none)
     self.usable_in = "all"
     -- Item this item will get turned into when consumed
-    self.result_item = "Bottle"
+    self.result_item = "Lit Candle"
     -- Will this item be instantly consumed in battles?
     self.instant = false
 
@@ -45,11 +45,30 @@ function item:init()
 
     -- Character reactions (key = party member id)
     self.reactions = {
-        susie = "Hey! This has a melony Taste!",
-        ralsei = "Healthy!",
-        noelle = "This tastes interesting...",
-        HW = "reminds me of home..."
+        HW = "I-I don't...",
+        SD = "mm... Love these cakes..."
     }
+end
+
+function item:getHealAmount(id)
+    if id == "SD" then
+        return self.heal_amount
+    else
+        return self.heal_amount_other
+    end
+end
+
+function item:onBattleUse(user, target)
+    if target.id == "SD" then
+        target:heal(self.heal_amount)
+    else
+        target:heal(self.heal_amount_other)
+    end
+    target:inflictStatus("atkboost", 5, 3)
+    Game.inventory:tryGiveItem("Lit Candle")
+    Game.inventory:tryGiveItem("Lit Candle")
+    Game.inventory:tryGiveItem("Lit Candle")
+    return true
 end
 
 return item

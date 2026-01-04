@@ -49,7 +49,7 @@ function actor:init()
         ["battle/attack_ready"] = { "battle/attackready", 0.08, false },
         ["battle/act_ready"]    = { "battle/actready", 0.2, true },
         ["battle/spell_ready"]  = { "battle/spellready", 0.08, false },
-        ["battle/item_ready"]   = { "battle/itemready", 0.2, true },
+        ["battle/item_ready"]   = { "battle/itemready", 0.1, false },
         ["battle/defend_ready"] = { "battle/defend", 1 / 15, false },
 
         ["battle/act_end"]      = { "battle/actend", 1 / 15, false, next = "battle/idle" },

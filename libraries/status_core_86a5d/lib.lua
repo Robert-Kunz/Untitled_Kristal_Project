@@ -11,19 +11,19 @@ end
 function Lib:init()
     print("Loaded Status CORE " .. self.info.version .. "!")
 	
-	Utils.hook(Utils, "dump", function(orig, o)
+	HookSystem.hook(TableUtils, "dump", function(orig, o)
 		if type(o) == "table" and isClass(o) and o.__tostring then
 			return tostring(o)
 		end
 		return orig(o)
 	end)
     
-    Utils.hook(PartyBattler, "init", function(orig, self, ...)
+    HookSystem.hook(PartyBattler, "init", function(orig, self, ...)
         orig(self, ...)
 		
 		self.statuses = {}	-- status_id: {statcon: status, turn_count: number of turns}
     end)
-    Utils.hook(PartyBattler, "inflictStatus", function(orig, self, status, turns, ...)
+    HookSystem.hook(PartyBattler, "inflictStatus", function(orig, self, status, turns, ...)
 		if self.statuses[status] then
 			self.statuses[status].turn_count = math.max(
 				self.statuses[status].turn_count,
@@ -38,19 +38,19 @@ function Lib:init()
 			self.statuses[status].statcon:onStatus(self)
 		end
     end)
-    Utils.hook(PartyBattler, "cureStatus", function(orig, self, status, reason)
+    HookSystem.hook(PartyBattler, "cureStatus", function(orig, self, status, reason)
 		if self.statuses[status] then
 			self.statuses[status].statcon:onCure(self, reason)
 			self.statuses[status] = nil
 		end
     end)
-    Utils.hook(PartyBattler, "update", function(orig, self)
+    HookSystem.hook(PartyBattler, "update", function(orig, self)
 		orig(self)
 		for id, status in pairs(self.statuses) do
 			status.statcon:onUpdate(self)
 		end
     end)
-    Utils.hook(PartyBattler, "hurt", function(orig, self, amount, exact, color, options)
+    HookSystem.hook(PartyBattler, "hurt", function(orig, self, amount, exact, color, options)
 		for id, status in pairs(self.statuses) do
 			amount = status.statcon:onHurt(self, amount) or amount
 		end
@@ -65,16 +65,16 @@ function Lib:init()
 			end
 		end
     end)
-    Utils.hook(PartyBattler, "hasStatus", function(orig, self, status)
+    HookSystem.hook(PartyBattler, "hasStatus", function(orig, self, status)
 		return (self.statuses[status] ~= nil)
     end)
     
-    Utils.hook(EnemyBattler, "init", function(orig, self, ...)
+    HookSystem.hook(EnemyBattler, "init", function(orig, self, ...)
         orig(self, ...)
 		
 		self.statuses = {}	-- status_id: {statcon: status, turn_count: number of turns}
     end)
-    Utils.hook(EnemyBattler, "inflictStatus", function(orig, self, status, turns, ...)
+    HookSystem.hook(EnemyBattler, "inflictStatus", function(orig, self, status, turns, ...)
 		if self.statuses[status] then
 			self.statuses[status].turn_count = math.max(
 				self.statuses[status].turn_count,
@@ -89,19 +89,19 @@ function Lib:init()
 			self.statuses[status].statcon:onStatus(self)
 		end
     end)
-    Utils.hook(EnemyBattler, "cureStatus", function(orig, self, status, reason)
+    HookSystem.hook(EnemyBattler, "cureStatus", function(orig, self, status, reason)
 		if self.statuses[status] then
 			self.statuses[status].statcon:onCure(self, reason)
 			self.statuses[status] = nil
 		end
     end)
-    Utils.hook(EnemyBattler, "update", function(orig, self)
+    HookSystem.hook(EnemyBattler, "update", function(orig, self)
 		orig(self)
 		for id, status in pairs(self.statuses) do
 			status.statcon:onUpdate(self)
 		end
     end)
-    Utils.hook(EnemyBattler, "draw", function(orig, self)
+    HookSystem.hook(EnemyBattler, "draw", function(orig, self)
 		local i = 0
 		love.graphics.setFont(Assets.getFont("smallnumbers"))
 		for k, status in pairs(self.statuses) do
@@ -141,11 +141,17 @@ function Lib:init()
 		end
         orig(self)
     end)
-    Utils.hook(EnemyBattler, "hurt", function(orig, self, amount, party, on_defeat, color, show_status, attacked)
+    HookSystem.hook(EnemyBattler, "hurt", function(orig, self, amount, party, on_defeat, color, show_status, attacked)
+		local changed = false
 		for id, status in pairs(self.statuses) do
+			local old_amount = amount
 			amount = status.statcon:onHurt(self, amount) or amount
+			if amount ~= old_amount then
+				changed = true
+			end
 		end
-		if amount > 0 then
+		Kristal.Console:log(party.chara.id .. ": " .. (changed and "True" or "False"))
+		if (amount > 0) or not changed then
 			orig(self, amount, party, on_defeat, color, show_status, attacked)
 		end
 		for _,battler in ipairs(Game.battle.enemies) do
@@ -156,11 +162,11 @@ function Lib:init()
 			end
 		end
     end)
-    Utils.hook(EnemyBattler, "hasStatus", function(orig, self, status)
+    HookSystem.hook(EnemyBattler, "hasStatus", function(orig, self, status)
 		return (self.statuses[status] ~= nil)
     end)
     
-    Utils.hook(Battle, "nextTurn", function(orig, self)
+    HookSystem.hook(Battle, "nextTurn", function(orig, self)
         orig(self)
 		
 		for _, battler in ipairs(Game.battle.party) do
@@ -189,7 +195,7 @@ function Lib:init()
 			end
 		end
     end)
-    Utils.hook(Battle, "onStateChange", function(orig, self, old, new)
+    HookSystem.hook(Battle, "onStateChange", function(orig, self, old, new)
         orig(self, old, new)
 		
 		if new == "ACTIONSDONE" then
@@ -216,7 +222,7 @@ function Lib:init()
 			end
 		end
     end)
-    Utils.hook(Battle, "init", function(orig, self, ...)
+    HookSystem.hook(Battle, "init", function(orig, self, ...)
         orig(self, ...)
 		if Kristal.getLibConfig("status_core", "status_menu") then
 			local sv = StatusView()
@@ -225,7 +231,7 @@ function Lib:init()
 		end
     end)
 
-	Utils.hook(PartyMember, "getStat", function (orig, self, name, default, light)
+	HookSystem.hook(PartyMember, "getStat", function (orig, self, name, default, light)
         local value = orig(self, name, default, light)
         if Game.battle then
             local battler = Game.battle:getPartyBattler(self.id)
@@ -237,7 +243,7 @@ function Lib:init()
         return value
     end)
 
-    Utils.hook(ActionBoxDisplay, "draw", function(orig, self)
+    HookSystem.hook(ActionBoxDisplay, "draw", function(orig, self)
 		local i = 0
 		love.graphics.setFont(Assets.getFont("smallnumbers"))
 		for k, status in pairs(self.actbox.battler.statuses) do
@@ -283,12 +289,12 @@ function Lib:init()
 	if Mod.libs["magical-glass"] and Kristal.getLibConfig("status_core", "magical-glass") then
 		print("[Status CORE] Magical Glass detected and changes allowed.")
 		if LightPartyBattler then
-			Utils.hook(LightPartyBattler, "init", function(orig, self, ...)
+			HookSystem.hook(LightPartyBattler, "init", function(orig, self, ...)
 				orig(self, ...)
 				
 				self.statuses = {}	-- status_id: {statcon: status, turn_count: number of turns}
 			end)
-			Utils.hook(LightPartyBattler, "inflictStatus", function(orig, self, status, turns, ...)
+			HookSystem.hook(LightPartyBattler, "inflictStatus", function(orig, self, status, turns, ...)
 				if self.statuses[status] then
 					self.statuses[status].turn_count = math.max(
 						self.statuses[status].turn_count,
@@ -302,19 +308,19 @@ function Lib:init()
 					self.statuses[status].statcon:onStatus(self)
 				end
 			end)
-			Utils.hook(LightPartyBattler, "cureStatus", function(orig, self, status)
+			HookSystem.hook(LightPartyBattler, "cureStatus", function(orig, self, status)
 				if self.statuses[status] then
 					self.statuses[status].statcon:onCure(self)
 					self.statuses[status] = nil
 				end
 			end)
-			Utils.hook(LightPartyBattler, "update", function(orig, self)
+			HookSystem.hook(LightPartyBattler, "update", function(orig, self)
 				orig(self)
 				for id, status in pairs(self.statuses) do
 					status.statcon:onUpdate(self)
 				end
 			end)
-			Utils.hook(LightPartyBattler, "hurt", function(orig, self, amount, exact, color, options)
+			HookSystem.hook(LightPartyBattler, "hurt", function(orig, self, amount, exact, color, options)
 				for id, status in pairs(self.statuses) do
 					amount = status.statcon:onHurt(self, amount) or amount
 				end
@@ -329,13 +335,13 @@ function Lib:init()
 					end
 				end
 			end)
-			Utils.hook(LightPartyBattler, "hasStatus", function(orig, self, status)
+			HookSystem.hook(LightPartyBattler, "hasStatus", function(orig, self, status)
 				return (self.statuses[status] ~= nil)
 			end)
 		end
 		
 		if LightBattle then
-			Utils.hook(LightBattle, "nextTurn", function(orig, self)
+			HookSystem.hook(LightBattle, "nextTurn", function(orig, self)
 				orig(self)
 				
 				for _, battler in ipairs(Game.battle.party) do
@@ -351,7 +357,7 @@ function Lib:init()
 					end
 				end
 			end)
-			Utils.hook(LightBattle, "onStateChange", function(orig, self, old, new)
+			HookSystem.hook(LightBattle, "onStateChange", function(orig, self, old, new)
 				orig(self, old, new)
 				
 				if new == "ACTIONSDONE" then
@@ -368,7 +374,7 @@ function Lib:init()
 					end
 				end
 			end)
-			Utils.hook(LightBattle, "init", function(orig, self, ...)
+			HookSystem.hook(LightBattle, "init", function(orig, self, ...)
 				orig(self, ...)
 				if Kristal.getLibConfig("status_core", "status_menu") then
 					local sv = StatusView()
@@ -376,7 +382,7 @@ function Lib:init()
 					self:addChild(sv)
 				end
 			end)
-			Utils.hook(LightBattle, "draw", function(orig, self)
+			HookSystem.hook(LightBattle, "draw", function(orig, self)
 				orig(self)
 				
 				for i, battler in ipairs(self.party) do

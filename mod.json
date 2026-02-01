@@ -1,12 +1,12 @@
 {
     // The ID of your mod. Should be unique!!
-    "id": "testing",
+    "id": "untitled_kristal_mod",
     // Displays on the main menu.
-    "name": "Testing",
+    "name": "UKM",
     // Displays underneath the name. Optional.
-    "subtitle": "",
+    "subtitle": "name to be defined",
     // The version of your mod.
-    "version": "v0.1.5 Birthday Bash",
+    "version": "v0.2 indev",
     // What version of the engine your mod was made with.
     "engineVer": "v0.10.0-dev",
     // The Deltarune chapter you'd like to base your mod off of.

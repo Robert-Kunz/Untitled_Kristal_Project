@@ -35,7 +35,8 @@ function PartyBattler:hurt(amount, exact, color, options)
     end
 
     if (self.chara:getHealth() <= 0) then
-        if self.chara.id == "HW" then
+        -- checks if the character downed is Honeywisp, if yes, shows different downing message.
+        if self.chara.id == "Honeywisp" then
             self:statusMessage("msg", swoon and "swoon" or "gone", color, true)
         else
             self:statusMessage("msg", swoon and "swoon" or "down", color, true)

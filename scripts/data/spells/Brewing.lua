@@ -20,8 +20,13 @@ function spell:init()
     self.target = "none"
 
     -- Tags that apply to this spell
-    self.tags = {"Item"}
+    self.tags = { "Item" }
+
+    -- changing spell casting animations
+    self.cast_anim = "battle/brewing"
+    self.select_anim = "battle/brewing_ready"
 end
+
 function spell:getCastMessage(user, target)
     if Game.inventory:hasItem("Bottle") then
         Game.inventory:removeItem("Bottle")
@@ -44,7 +49,7 @@ function spell:onCast()
     end
     if Game.inventory:hasItem("Bottle") then
         Game.inventory:removeItem("Bottle")
-        Game.inventory:tryGiveItem("Strength_Potion")   
+        Game.inventory:tryGiveItem("Strength_Potion")
     end
 end
 

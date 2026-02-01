@@ -1,4 +1,4 @@
-local character, super = Class(PartyMember, "HW")
+local character, super = Class(PartyMember, "Honeywisp")
 
 function character:init()
     super.init(self)
@@ -33,6 +33,7 @@ function character:init()
     self:addSpell("Vanish")
     self:addSpell("Mitite_toss")
     self:addSpell("Eggcify")
+
     -- Current health (saved to the save file)
     self.health = 50
 
@@ -53,7 +54,7 @@ function character:init()
     self.weapon_icon = "ui/menu/equip/sword"
 
     -- Equipment (saved to the save file)
-    self:setWeapon("red_scarf")
+    self:setWeapon("Egg")
     self:setArmor(1, "amber_card")
     --self:setArmor(2, "amber_card")
 

@@ -49,10 +49,10 @@ function character:init()
     }
 
     -- Weapon icon in equip menu
-    self.weapon_icon = "ui/menu/equip/sword"
+    self.weapon_icon = "ui/menu/equip/vine"
 
     -- Equipment (saved to the save file)
-    self:setWeapon("blackshard")
+    self:setWeapon("basic_vine")
     self:setArmor(1, "amber_card")
     --self:setArmor(2, "amber_card")
 
@@ -79,7 +79,7 @@ function character:init()
     self.name_sprite = nil
 
     -- Effect shown above enemy after attacking it
-    self.attack_sprite = "effects/attack/cut"
+    self.attack_sprite = "effects/attack/"
     -- Sound played when this character attacks
     self.attack_sound = "laz_c"
     -- Pitch of the attack sound
@@ -103,5 +103,21 @@ function character:init()
     -- Message shown on gameover (optional)
     self.gameover_message = true
 end
+
+--function character:canEquip(item, slot_type, slot_index)
+--   if item then
+--      return super.canEquip(self, item, slot_type, slot_index)
+--   else
+--     local item
+--      if slot_type == "weapon" then
+--         item = self:getWeapon()
+--      elseif slot_type == "armor" then
+--          item = self:getArmor(slot_index)
+--     else
+--          return true
+--       end
+--       return false
+--   end
+--end
 
 return character

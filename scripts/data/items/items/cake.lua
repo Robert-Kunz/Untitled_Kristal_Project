@@ -45,11 +45,12 @@ function item:init()
 
     -- Character reactions (key = party member id)
     self.reactions = {
-        HW = "I-I don't...",
+        Honeywisp = "I-I don't...",
         SD = "mm... Love these cakes..."
     }
 end
 
+-- Checks to see if the target is SD, if yes, heals for a different amount
 function item:getHealAmount(id)
     if id == "SD" then
         return self.heal_amount

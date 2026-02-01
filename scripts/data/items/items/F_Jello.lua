@@ -45,15 +45,16 @@ function item:init()
 
     -- Character reactions (key = party member id)
     self.reactions = {
-        HW = "I-I'm gonna be sick...",
+        Honeywisp = "I-I'm gonna be sick...",
         SD = "Isn't this a...?"
     }
 end
 
 function item:onWorldUse(target)
     Kristal.Console:log("yes this is even running")
-    if target == Game:getPartyMember("HW") then
-        Game.world:hurtParty("HW", self.heal_amount_other)
+    if target == Game:getPartyMember("Honeywisp") then
+        Kristal.Console:log("Yes she is getting hurt")
+        Game.world:hurtParty("Honeywisp", self.heal_amount_other)
         target.health = MathUtils.clamp(target.health, 1, 50)
         return
     else

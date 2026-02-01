@@ -10,6 +10,7 @@ function Barracuda:init()
 
     -- Enemy health
     self.max_health = 7000
+    -- 1050 is 15% of max hp
     self.health = 7000
     -- Enemy attack (determines bullet damage)
     self.attack = 10
@@ -175,7 +176,7 @@ function Barracuda:onAct(battler, name)
         elseif battler.chara.id == "Fifty" then
             -- Wastes Fifty's turn
             return "* Fifty looked at Barracuda and taunted him.\n* Barracuda didn't hear it thanks to just beats."
-        elseif battler.chara.id == "HW" then
+        elseif battler.chara.id == "Honeywisp" then
             -- Heals Barracuda, though also weakens him for the turn
             self.HW_action = true
             local base_heal = battler.chara:getStat("magic") + 30

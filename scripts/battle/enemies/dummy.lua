@@ -25,7 +25,8 @@ function Dummy:init()
     self.waves = {
         "basic",
         "aiming",
-        "movingarena"
+        "movingarena",
+        "mix"
     }
 
     -- Dialogue randomly displayed in the enemy's speech bubble
@@ -49,7 +50,7 @@ function Dummy:init()
     self:registerAct("Smile")
     -- Register party act with Ralsei called "Tell Story"
     -- (second argument is description, usually empty)
-    self:registerAct("Tell Story", "", {"ralsei"})
+    self:registerAct("Tell Story", "", {"Fifty"})
 end
 
 function Dummy:onAct(battler, name)

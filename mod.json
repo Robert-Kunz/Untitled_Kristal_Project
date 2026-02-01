@@ -1,12 +1,12 @@
 {
     // The ID of your mod. Should be unique!!
-    "id": "untitled_kristal_mod",
+    "id": "testing",
     // Displays on the main menu.
-    "name": "UKM",
+    "name": "Testing",
     // Displays underneath the name. Optional.
-    "subtitle": "name to be defined",
+    "subtitle": "",
     // The version of your mod.
-    "version": "v0.2 indev",
+    "version": "v0.1.5 Birthday Bash",
     // What version of the engine your mod was made with.
     "engineVer": "v0.10.0-dev",
     // The Deltarune chapter you'd like to base your mod off of.
@@ -18,13 +18,15 @@
     // The party. The first character is the player.
     "party": [
         "SD",
-        "HW",
+        "Honeywisp",
         "susie"
     ],
     // The inventory. Contains three darkburgers, a cell phone and a shadow crystal by default.
     "inventory": {
         "items": [
-            "cake"
+            "Bottle",
+            "Bottle",
+            "Bottle"
         ],
         "key_items": [
             "cell_phone",
@@ -55,6 +57,89 @@
             ]
         }
     },
+    // Decides what names crash the mod, in this case, none(directly)
+    "namesCrash": [],
+    //specific messages when typing in a certain name
+    "namesMessages": {
+        "SD": "REALLY...?",
+        "HW": "SHE HAS ENOUGH TRAUMA",
+        "HONEYWISP": "SHE HAS ENOUGH TRAUMA",
+        "FIFTY": "...WHY?",
+        "FIFTYSET80": "You thought i\nwouldn't think of that?",
+        "50": "Just Numbers? Boring",
+        "50SET80": "Lmao, thought i\n forgot this?",
+        "GASTER": "I'm Wing Gaster!\nThe royal scientist!\n.",
+        "WDGASTER": "I'm Wing Ding Gaster!\nThe royal scientist!\n*dies through core*"
+    },
+    // Adds Numbers to the keyboard, thanks elioz3 on Discord for this
+    "keyboardMode": {
+        "x": 136,
+        "y": 140,
+        "step_x": 40,
+        "step_y": 40,
+        "name_y": 80,
+        "keyboard": [
+            [
+                "A",
+                "B",
+                "C",
+                "D",
+                "E",
+                "F",
+                "G",
+                "H",
+                "I",
+                "J"
+            ],
+            [
+                "K",
+                "L",
+                "M",
+                "N",
+                "O",
+                "P",
+                "Q",
+                "R",
+                "S",
+                "T"
+            ],
+            [
+                "U",
+                "V",
+                "W",
+                "X",
+                "Y",
+                "Z",
+                "vv",
+                "vv",
+                "vv",
+                "vv"
+            ],
+            [
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9"
+            ],
+            [
+                ">>",
+                ">>",
+                ">>",
+                ">>",
+                ">>",
+                ">>",
+                "BACK",
+                "<<",
+                "END"
+            ]
+        ]
+    },
     // Should never be true, but just in case. Restarts the entire engine when leaving the mod.
     // If you need this, you're most likely doing something wrong.
     "hardReset": false,
@@ -64,11 +149,15 @@
     // in the file `window_icon.png`.
     // When your mod is configured as the engine's target mod, it's automatically done unless if
     // this option is explicitly set to false; else, it's done if this is set to true.
-    "setWindowTitleAndIcon": null,
+    "setWindowTitleAndIcon": true,
     // Config values for the engine and any libraries you may have.
     // These config values can control chapter-specific features as well.
     "config": {
         "kristal": {
+            // Whether X-Actions appear in spell menu by default
+            "partyActions": true,
+            // Whether battles should use the targeting system or not
+            "targetSystem": true,
             // End of config
         }
     }

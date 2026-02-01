@@ -45,11 +45,12 @@ function item:init()
         ralsei = "This is just glass...",
         Fifty = "You still have to fill this, idiot",
         SD = "Ahh... perfect, an empty Bottle.",
-        HW = "...huh?"
+        Honeywisp = "...huh?"
     }
 end
 
 function item:getBattleMessage(user, target)
+    -- doesn't work currently
     return ("* " + user.chara:getName() + " doesn't know what to do with the " + item.getUseName() + "...")
 end
 

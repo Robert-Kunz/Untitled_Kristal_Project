@@ -50,7 +50,7 @@ function Test:init()
     -- Register act called "Smile"
     self:registerAct("Consume")
     self:registerAct("Take Care")
-    self:registerAct("Take Care X", "", { "HW" })
+    self:registerAct("Take Care X", "", { "Honeywisp" })
     -- Register party act with Ralsei called "Tell Story"
     -- (second argument is description, usually empty)
 end
@@ -115,7 +115,7 @@ function Test:onAct(battler, name)
             return {
                 "* SD tidies up the piece of sushi.\n* The Piece of Sushi appreciates it"
             }
-        elseif battler.chara.id == "HW" then
+        elseif battler.chara.id == "Honeywisp" then
             -- S-Action: start a cutscene (see scripts/battle/cutscenes/dummy.lua)
             local base_heal = battler.chara:getStat("magic") + 30
             local heal_amount = Game.battle:applyHealBonuses(base_heal, battler.chara)

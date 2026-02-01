@@ -19,10 +19,11 @@ return {
         cutscene:text("* SO YOU TAKE YOUR EXCUSES...", "angry", "Barracuda")
         for _, v in pairs(enemies) do -- this is a for loop
             if v.id == "Barracuda" then
-                v:setAnimation("awakening")
+                cutscene:wait(cutscene:setAnimation(v, { "awakening", 0.1, false }))
+                v:setAnimation("awakened")
             end
         end
-        cutscene:wait(3.5)
+        --cutscene:wait(3.5)
         cutscene:text("* AND LEAVE!", "awakened", "Barracuda")
     end,
     Convince = function(cutscene, battler, enemy)
@@ -38,8 +39,9 @@ return {
         cutscene:text("* THIS AIN'T A RAP BATTLE, KID.\n* AND IT ISN'T THERAPY AS WELL", "idle", "Barracuda")
         cutscene:text("* I WILL NOT DISAPPOINT BOSS AGAIN.", "angry", "Barracuda")
         cutscene:text("* SO YOU TAKE YOUR EXCUSES...", "angry", "Barracuda")
-        enemy:setAnimation("awakening")
-        cutscene:wait(3.5)
+        cutscene:wait(cutscene:setAnimation(enemy, { "awakening", 0.1, false }))
+        enemy:setAnimation("awakened")
+        --cutscene:wait(3.5)
         cutscene:text("* AND LEAVE!", "awakened", "Barracuda")
     end
 }

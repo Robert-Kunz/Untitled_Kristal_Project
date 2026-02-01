@@ -43,7 +43,7 @@ return {
             cutscene:text("* [speed:0.4]DON'T BE RIDICULOUS.", nil, "gaster")
             cutscene:text("* B-but I'm telling the truth! It's [color:red]their[color:reset] name...", "Hopeless", "SD")
         elseif Game.save_name == "50" or Game.save_name == "FIFTYSET80" or Game.save_name == "50SET80" then
-            cutscene:text("* [speed:0.4][color:orange]50[color:reset] CAN'T CONTROL YOU...", nil, "gaster")
+            cutscene:text("* [speed:0.4][color:black]50[color:reset] CAN'T CONTROL YOU...", nil, "gaster")
             cutscene:text("* [speed:0.4]DON'T BE RIDICULOUS.", nil, "gaster")
             cutscene:text("* B-but I'm telling the truth! It's [color:red]their[color:reset] name...", "Hopeless", "SD")
         elseif Game.save_name == "GASTER" or Game.save_name == "WDGASTER" then

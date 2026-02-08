@@ -1,5 +1,5 @@
 local Fifty, super = Class(EnemyBattler)
-
+-- Only here for archiving the original code, differences were moved to the main Fifty enemy
 function Fifty:init()
     super.init(self)
 
@@ -56,16 +56,14 @@ function Fifty:init()
     self.low_health_text = "* Fifty seems worn out... \n* Now's your chance! Attack while he can't dodge!"
     self.Tirecounter = 0
     self.distracted = false
-    -- Register act called "Smile"
     self:registerAct("Kill")
     self:registerAct("distract")
     self:registerAct("Dodge Status")
     self:registerAct("Tire")
-    -- Register party act with Ralsei called "Tell Story"
-    -- (second argument is description, usually empty)
 end
 
 function Fifty:hurt(amount, battler, on_defeat, color, show_status, attacked)
+    -- Gives a random chance for Fifty to dodge the attack, so long he isn't distracted or tired
     if math.random(1, 2) == 2 and not (self.distracted == true or self.tired) then
         amount = 0
     end

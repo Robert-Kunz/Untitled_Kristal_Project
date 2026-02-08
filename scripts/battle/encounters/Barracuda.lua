@@ -7,7 +7,7 @@ function Barracuda:init()
     self.text = "* Just Beats fill the area."
 
     -- Battle music ("battle" is rude buster)
-    self.music = "Barracuda"
+    self.music = "battle/Barracuda"
     -- Enables the purple grid battle background
     self.background = true
 

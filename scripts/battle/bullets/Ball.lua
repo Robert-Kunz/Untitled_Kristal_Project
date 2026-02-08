@@ -14,6 +14,7 @@ end
 function Ball:update()
     -- For more complicated bullet behaviours, code here gets called every update
     super.update(self)
+    -- causes the bullet to grow overtime
     self:setScale(self.scale_x + (0.03 * DTMULT), self.scale_y + (0.03 * DTMULT))
 end
 

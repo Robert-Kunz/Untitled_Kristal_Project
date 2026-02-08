@@ -7,62 +7,117 @@ function Fifty:init()
     self.name = "Fifty"
     -- Sets the actor, which handles the enemy's sprites (see scripts/data/actors/dummy.lua)
     self:setActor("FiftyN")
+    if Game:getFlag("Birthday", false) == true then
+        -- Enemy health
+        self.max_health = 4500
+        self.health = 4500
+        -- Enemy attack (determines bullet damage)
+        self.attack = 13
+        -- Enemy defense (usually 0)
+        self.defense = 1
+        -- Enemy reward
+        self.money = 2009
 
-    -- Enemy health
-    self.max_health = 4000
-    self.health = 4000
-    -- Enemy attack (determines bullet damage)
-    self.attack = 10
-    -- Enemy defense (usually 0)
-    self.defense = 2
-    -- Enemy reward
-    self.money = 1000
+        -- Mercy given when sparing this enemy before its spareable (20% for basic enemies)
+        self.spare_points = 0
 
-    -- Mercy given when sparing this enemy before its spareable (20% for basic enemies)
-    self.spare_points = 0
+        -- List of possible wave ids, randomly picked each turn
+        self.waves = {
+            "spores",
+            "bombs",
+            "Fgrow",
+            "Mixed_barracuda",
+            "Sporesbutgood"
+        }
 
-    -- List of possible wave ids, randomly picked each turn
-    self.waves = {
-        "test",
-        "spores",
-        "spores"
-    }
+        -- Dialogue randomly displayed in the enemy's speech bubble
+        self.dialogue = {
+            "You're the parody, sd!",
+            "Dodge, Delete!",
+            "I picked up some tricks from that Triangle!",
+            "Mushrooms...",
+            "HUND KLAVIER!",
+        }
 
-    -- Dialogue randomly displayed in the enemy's speech bubble
-    self.dialogue = {
-        "You're the parody, sd!",
-        "Dodge, Delete!",
-        "I picked up a trick from those sushi!",
-        "Mushrooms...",
-        "HUND KLAVIER!"
-    }
+        -- Check text (automatically has "ENEMY NAME - " at the start)
+        self.check = { "AT 10 DF 2\n* Stupid Birthday crasher...",
+            "Shows signs of being able to dodge\n* Maybe you can [color:yellow]distract[color:reset] him?" }
 
-    -- Check text (automatically has "ENEMY NAME - " at the start)
-    self.check = { "AT 10 DF 2\n* This is just a mushroom \n* ...or is it?",
-        "Shows signs of being able to dodge\n* Maybe you can [color:yellow]distract[color:reset] him?" }
+        -- Text randomly displayed at the bottom of the screen each turn
+        self.text = {
+            "* You feel the power of fish... wait wrong encounter",
+            "* Spores cover the area completely",
+            "* This isn't dnd...",
+            "* (Why did it have to be him?)",
+            "* HUND [wait:7]KLAAAAAAVIERRRRRRRRRR",
+            "* The air fills with the scent of candles"
+        }
+        -- Text displayed at the bottom of the screen when the enemy has low health
+        self.low_health_text = "* Fifty seems worn out... \n* Now's your chance! Attack while he can't dodge!"
+        self.Tirecounter = 0
+        self.distracted = false
+        self:registerAct("Kill")
+        self:registerAct("distract")
+        self:registerAct("Dodge Status")
+        self:registerAct("Tire")
+    else
+        -- Enemy health
+        self.max_health = 4000
+        self.health = 4000
+        -- Enemy attack (determines bullet damage)
+        self.attack = 10
+        -- Enemy defense (usually 0)
+        self.defense = 2
+        -- Enemy reward
+        self.money = 1000
 
-    -- Text randomly displayed at the bottom of the screen each turn
-    self.text = {
-        "* You feel the power of fish... wait wrong encounter",
-        "* Spores cover the area completely",
-        "* This isn't dnd...",
-        "* (Why did it have to be him?)",
-        "* HUND [wait:7]KLAAAAAAVIERRRRRRRRRR"
-    }
-    -- Text displayed at the bottom of the screen when the enemy has low health
-    self.low_health_text = "* Fifty seems worn out... \n* Now's your chance! Attack while he can't dodge!"
-    self.Tirecounter = 0
-    self.distracted = false
-    -- Register act called "Smile"
-    self:registerAct("Kill")
-    self:registerAct("distract")
-    self:registerAct("Dodge Status")
-    self:registerAct("Tire")
-    -- Register party act with Ralsei called "Tell Story"
-    -- (second argument is description, usually empty)
+        -- Mercy given when sparing this enemy before its spareable (20% for basic enemies)
+        self.spare_points = 0
+
+        -- List of possible wave ids, randomly picked each turn
+        self.waves = {
+            "test",
+            "spores",
+            "spores"
+        }
+
+        -- Dialogue randomly displayed in the enemy's speech bubble
+        self.dialogue = {
+            "You're the parody, sd!",
+            "Dodge, Delete!",
+            "I picked up a trick from those sushi!",
+            "Mushrooms...",
+            "HUND KLAVIER!"
+        }
+
+        -- Check text (automatically has "ENEMY NAME - " at the start)
+        self.check = { "AT 10 DF 2\n* This is just a mushroom \n* ...or is it?",
+            "Shows signs of being able to dodge\n* Maybe you can [color:yellow]distract[color:reset] him?" }
+
+        -- Text randomly displayed at the bottom of the screen each turn
+        self.text = {
+            "* You feel the power of fish... wait wrong encounter",
+            "* Spores cover the area completely",
+            "* This isn't dnd...",
+            "* (Why did it have to be him?)",
+            "* HUND [wait:7]KLAAAAAAVIERRRRRRRRRR"
+        }
+        -- Text displayed at the bottom of the screen when the enemy has low health
+        self.low_health_text = "* Fifty seems worn out... \n* Now's your chance! Attack while he can't dodge!"
+        self.Tirecounter = 0
+        self.distracted = false
+        -- Register act called "Smile"
+        self:registerAct("Kill")
+        self:registerAct("distract")
+        self:registerAct("Dodge Status")
+        self:registerAct("Tire")
+        -- Register party act with Ralsei called "Tell Story"
+        -- (second argument is description, usually empty)
+    end
 end
 
 function Fifty:hurt(amount, battler, on_defeat, color, show_status, attacked)
+    -- Gives a random chance for Fifty to dodge the attack, so long he isn't distracted or tired
     if math.random(1, 2) == 2 and not (self.distracted == true or self.tired) then
         Kristal.Console:log("haw haw")
         amount = 0
@@ -87,10 +142,24 @@ end
 
 function Fifty:onAct(battler, name)
     if name == "Check" then
-        self.dialogue_override = {
-            "Really? Checking me?",
-            "You really did get rusty, sd."
-        }
+        if Game:getFlag("Birthday", false) == true then
+            self.dialogue_override = {
+                "Really? Checking me?",
+                "You really did get rusty, sd."
+            }
+            return { ("* FIFTYSET80 - AT " + self.attack + " DF " + self.defense +
+                "\n* Stupid Birthday crasher..."),
+                "* Shows signs of being able to dodge\n* Maybe you can [color:yellow]distract[color:reset] him?",
+                "Must be your Age." }
+        else
+            self.dialogue_override = {
+                "Really? Checking me?",
+                "You really did get rusty, sd."
+            }
+            return { ("* FIFTYSET80 - AT " + self.attack + " DF " + self.defense +
+                "\n* Parody of SD\n* ...or is he?"),
+                "* Shows signs of being able to dodge\n* Maybe you can [color:yellow]distract[color:reset] him?" }
+        end
     end
 
     if name == "Kill" and self.tired then

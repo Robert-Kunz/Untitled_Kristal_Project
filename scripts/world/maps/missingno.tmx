@@ -4,7 +4,8 @@
   <export target="missingno.lua" format="lua"/>
  </editorsettings>
  <properties>
-  <property name="name" value="Test Map - Room 1"/>
+  <property name="music" value="overworld/ZZAZZ_Music"/>
+  <property name="name" value="Missingno's lair"/>
  </properties>
  <tileset firstgid="1" source="../tilesets/castle.tsx"/>
  <layer id="1" name="tiles" width="20" height="24">

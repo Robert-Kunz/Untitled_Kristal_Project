@@ -19,11 +19,11 @@ return {
         cutscene:text("* SO YOU TAKE YOUR EXCUSES...", "angry", "Barracuda")
         for _, v in pairs(enemies) do -- this is a for loop
             if v.id == "Barracuda" then
+                -- makes the game wait for the animation to finish
                 cutscene:wait(cutscene:setAnimation(v, { "awakening", 0.1, false }))
                 v:setAnimation("awakened")
             end
         end
-        --cutscene:wait(3.5)
         cutscene:text("* AND LEAVE!", "awakened", "Barracuda")
     end,
     Convince = function(cutscene, battler, enemy)
@@ -43,5 +43,21 @@ return {
         enemy:setAnimation("awakened")
         --cutscene:wait(3.5)
         cutscene:text("* AND LEAVE!", "awakened", "Barracuda")
+    end,
+
+    Deletion = function(cutscene, battler, enemy)
+        -- Open textbox and wait for completion
+        local enemies = Game.battle.enemies
+        cutscene:wait(1)
+        cutscene:text("* ...", "idle", "Barracuda")
+        cutscene:text("* YOU,[wait:1] DARE?!", "angry", "Barracuda")
+        cutscene:text("* YOU WILL DIE!", "angry", "Barracuda")
+        cutscene:text("* Well shit\n* [face:Tired](Didn't expect him to block that, fuck!)", "idle", "SD")
+        for _, v in pairs(enemies) do -- this is a for loop
+            if v.id == "Barracuda" then
+                enemy:setAnimation("idle")
+            end
+        end
+        Game:setFlag("Deletion_Barracuda", true)
     end
 }

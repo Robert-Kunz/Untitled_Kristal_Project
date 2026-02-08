@@ -7,7 +7,7 @@ function Fifty:init()
     self.text = "* Spores begin to fill the area"
 
     -- Battle music
-    self.music = "The_Path_of_Justice"
+    self.music = "battle/The_Path_of_Justice"
     -- Enables the purple grid battle background
     self.background = true
 
@@ -23,6 +23,6 @@ end
 
 function Fifty:onReturnToWorld()
     Game.world:startCutscene("Fifty", "Leave")
-    end
+end
 
 return Fifty

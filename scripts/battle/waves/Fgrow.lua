@@ -3,7 +3,7 @@ local grow, super = Class(Wave)
 function grow:onStart()
     self:setArenaSize(150, 200)
     for _, v in ipairs(self:getAttackers()) do
-        if v.id == "Fifty_Birthday" then
+        if v.id == "Fifty_Birthday" or v.id == "Fifty" then
             -- Every 0.33 seconds...
             self.timer:every(1 / 2, function()
                 local x, y = v:getRelativePos(v.width / 2, v.height / 2)

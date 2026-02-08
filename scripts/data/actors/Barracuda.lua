@@ -42,7 +42,9 @@ function actor:init()
         -- (even though there's only 1 idle frame)
         ["idle"] = { "idle", 0.03, true },
         ["awakening"] = { "awakening", 0.1, false, next = "awakened" },
-        ["awakened"] = { "awakened", 0.03, true }
+        ["awakened"] = { "awakened", 0.03, true },
+        ["deletion_block"] = { "deletion_block", 0.1, false },
+        ["deletion_delete"] = { "deletion_delete", 0.1, false }
     }
 
     -- Table of sprite offsets (indexed by sprite name)
@@ -51,6 +53,8 @@ function actor:init()
         ["idle"] = { -10, 30 },
         ["awakening"] = { -10, 30 },
         ["awakened"] = { -10, 30 },
+        ["deletion_block"] = { -10, 30 },
+        ["deletion_delete"] = { -10, 30 }
     }
 end
 

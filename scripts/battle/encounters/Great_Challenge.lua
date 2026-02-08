@@ -7,7 +7,7 @@ function Challenge:init()
     self.text = "* The air fills with a looming sense of dread"
 
     -- Battle music
-    self.music = "Barracuda"
+    self.music = "battle/Barracuda"
     -- Enables the purple grid battle background
     self.background = true
 
@@ -25,6 +25,6 @@ end
 
 function Challenge:onReturnToWorld()
     Game.world:startCutscene("Fifty", "Leave")
-    end
+end
 
 return Challenge

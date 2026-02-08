@@ -35,15 +35,15 @@ function item:init()
 
     -- Equip bonuses (for weapons and armor)
     self.bonuses = {
-        attack = 16,
+        attack = 3,
     }
 
     -- Equippable characters (default true for armors, false for weapons)
-    self.can_equip = {}
+    self.can_equip = { SD = true }
 
     -- Character reactions
     self.reactions = {
-        SD = "I'm not re-equipping that",
+        SD = "Better than nothing?",
         Honeywisp = "Why are you handing me a vine..."
     }
 end

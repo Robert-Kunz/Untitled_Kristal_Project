@@ -44,6 +44,7 @@ function actor:init()
         ["battle/act"]           = { "battle/act", 1 / 15, false },
         ["battle/spell"]         = { "battle/spell", 0.1, false },
         ["battle/brewing"]       = { "battle/brewing", 0.2, false },
+        ["battle/deletion"]      = { "battle/deletion", 0.1, false },
         ["battle/item"]          = { "battle/item", 1 / 12, false, next = "battle/item_end" },
         ["battle/spare"]         = { "battle/act", 1 / 15, false, next = "battle/idle" },
 
@@ -83,6 +84,8 @@ function actor:init()
         ["battle/itemend"] = { -6, -6 },
         ["battle/itemready"] = { -6, -6 },
         ["battle/spell"] = { -6, -6 },
+        ["battle/brewing"] = { -6, -6 },
+        ["battle/deletion"] = { -6, -6 },
         ["battle/spellready"] = { -6, -6 },
         ["battle/defend"] = { -5, -1 },
 

@@ -1,5 +1,5 @@
 local MachineGun, super = Class(Wave)
-
+-- -- THIS IS NOT WRITTEN BY ME, THIS WAS TAKEN FROM Somerandomguy, a friend of mine (with permission)
 local inaccuracy = 15
 local shot_number = 0
 

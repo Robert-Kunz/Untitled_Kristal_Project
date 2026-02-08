@@ -46,16 +46,6 @@ function actor:init()
 end
 
 function actor:onTextSound()
-    --if self.voice_timer == 0 then
-    --    local rand = Utils.random(0, 8, 1) + 1
-
-    --     local pitchrandom = (0.86 + Utils.random(0.35))
-    --     local soundindex = "voice/missingno/glitch_" .. rand
-
-    --    Assets.stopAndPlaySound(soundindex, 0.7, pitchrandom)
-
-    --    self.voice_timer = 3
-    --end
     -- plays a random sound with a random pitch and speed(i think) from the catalogue of sounds
     -- as the "voice"
     if self.voice_timer == 0 then

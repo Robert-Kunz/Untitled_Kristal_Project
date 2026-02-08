@@ -1,7 +1,7 @@
 local SporesButGood, super = Class(Wave)
 
 local inaccuracy = 50
--- Written by Somerandomguy
+-- -- THIS IS NOT WRITTEN BY ME, THIS WAS TAKEN FROM Somerandomguy, a friend of mine (with permission)
 function SporesButGood:init()
     super.init(self)
 

@@ -19,7 +19,7 @@ function Test:init()
     self.money = 0
 
     -- Mercy given when sparing this enemy before its spareable (20% for basic enemies)
-    self.spare_points = 0
+    self.spare_points = 20
 
     -- List of possible wave ids, randomly picked each turn
     self.waves = {

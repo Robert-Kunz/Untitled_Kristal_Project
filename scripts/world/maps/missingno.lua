@@ -12,7 +12,8 @@ return {
   nextlayerid = 6,
   nextobjectid = 108,
   properties = {
-    ["name"] = "Test Map - Room 1"
+    ["music"] = "overworld/ZZAZZ_Music",
+    ["name"] = "Missingno's lair"
   },
   tilesets = {
     {

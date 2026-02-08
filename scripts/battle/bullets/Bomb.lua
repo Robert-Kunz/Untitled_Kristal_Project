@@ -11,6 +11,7 @@ function Bomb:init(x, y, dir, speed)
     self.destroy_on_hit = false
     self.physics.friction = 0.15
     self.timer = self:addChild(Timer())
+    --checks every 2 seconds if the bomb has basically stopped, if yes, spawns 8 bullets and then deletes itself
     self.timer:every(2, function()
         if math.abs(self.physics.speed) < 0.1 then
             self.wave:spawnBullet("CorruptedBullet", x - 5, self.y, math.rad(0), 10)

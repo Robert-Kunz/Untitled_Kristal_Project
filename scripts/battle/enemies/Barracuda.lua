@@ -62,14 +62,17 @@ function Barracuda:init()
     self:registerAct("Harmonize")
     Game:setFlag("Convinced", false)
     Game:setFlag("low", false)
+    Game:setFlag("Deletion_Barracuda", false)
 end
 
 function Barracuda:onTurnStart()
+    -- If the act happened last turn, reverts effects
     if self.HW_action == true then
         self.HW_action = false
         self.attack = self.attack + 3
         self:statusMessage("damage", 3, { 1, 0.5, 0.5 })
     end
+    -- If the act happened last turn, reverts effects
     if self.Rage == true then
         self.Rage = false
         self.attack = self.attack - 3
@@ -77,7 +80,7 @@ function Barracuda:onTurnStart()
         self:statusMessage("damage", 3, { 0.5, 0.5, 1 })
         self:statusMessage("damage", -3, { 1, 0.5, 0.5 })
     end
-
+    -- If the act happened last turn, reverts effects
     if self.Cautious == true then
         self.Cautious = false
         self.attack = self.attack + 3
@@ -86,7 +89,15 @@ function Barracuda:onTurnStart()
         self:statusMessage("damage", 3, { 1, 0.5, 0.5 })
     end
 
-    if Game:getFlag("Convinced", true) or Game:getFlag("low", true) then
+    if Game:getFlag("Convinced", true) then
+        self:spare()
+        if #Game.battle:getActiveEnemies() == 0 then
+            Game.battle.battle_ui.encounter_text:setText("")
+            Game.battle:setState("TRANSITIONOUT")
+        end
+    end
+
+    if Game:getFlag("low", true) then
         Game.battle.battle_ui.encounter_text:setText("")
         Game.battle:setState("TRANSITIONOUT")
     end
@@ -97,6 +108,10 @@ function Barracuda:onTurnStart()
     if self.start == true then
         self.original_y = self.y
         self.start = false
+    end
+
+    if Game:getFlag("Deletion_Barracuda", true) == true then
+        Game:setFlag("Deletion_Barracuda", false)
     end
 end
 
@@ -109,17 +124,33 @@ function Barracuda:onTurnEnd()
     end
 end
 
+function Barracuda:getTarget()
+    -- If Barracuda got hit with deletion in the same round, forces SD to get targetted and also inflicts rage
+    if Game:getFlag("Deletion_Barracuda", false) == true then
+        self.Rage = true
+        self.attack = self.attack + 3
+        self.defense = self.defense - 3
+        self:statusMessage("damage", -3, { 0.5, 0.5, 1 })
+        self:statusMessage("damage", 3, { 1, 0.5, 0.5 })
+        Game.battle:target(Game.battle:getPartyBattler("SD"))
+        return Game.battle:getPartyBattler("SD")
+    else
+        return super.getTarget(self)
+    end
+end
+
 function Barracuda:onAct(battler, name)
+    -- dynamic check
     if name == "Check" then
         return ("* BARRACUDA - AT " + self.attack + " DF " + self.defense +
             "\n* The Easiest of the 4 Bosses\n* Fights a lot with Snakes.")
     elseif name == "Harmonize" then
-        -- Loop through all enemies
+        -- replaces the current act with the next one
         self:registerAct("Disrupt")
         self:removeAct("Harmonize")
         return "* You try to Harmonize with Barracuda...\n[wait:10]* ...Obviously, it didn't work."
     elseif name == "Disrupt" then
-        -- Loop through all enemies
+        -- replaces the current act with the next one and alters stats
         self.attack = self.attack + 1
         self.defense = self.defense - 1
         self:statusMessage("damage", -1, { 0.5, 0.5, 1 })
@@ -129,7 +160,7 @@ function Barracuda:onAct(battler, name)
         return { "* You disrupt Barracuda's Beat.\n[wait:7]* He isn't very happy about that.",
             "* Barracuda's Attack increased! Though he leaves his guard down!" }
     elseif name == "Talk" then
-        -- Loop through all enemies
+        -- replaces the current act with the next one and alters stats
         self.dialogue_override = "YOU LIE!"
         self.Rage = true
         self.attack = self.attack + 3
@@ -138,6 +169,7 @@ function Barracuda:onAct(battler, name)
         self:statusMessage("damage", 3, { 1, 0.5, 0.5 })
         self:registerAct("Think")
         self:removeAct("Talk")
+        -- checks, if Shopkeeper Cube was talked to
         if Game:getFlag("Talked_with_cube", false) then
             return { "* You mention how Cube told you about Blixer.\n[wait:10]* That he wouldn't want this anymore.",
                 "* Barracuda becomes blinded with rage for this turn! Idiot!",
@@ -148,7 +180,7 @@ function Barracuda:onAct(battler, name)
                 "[wait:5]* Talking didn't work...\n* and neither did Harmonizing or Disrupting, what can?" }
         end
     elseif name == "Think" then
-        -- Loop through all enemies
+        -- replaces the current act with the next one and alters stats
         self.dialogue_override = "..."
         self.Cautious = true
         self.attack = self.attack - 3
@@ -161,7 +193,7 @@ function Barracuda:onAct(battler, name)
             "* * Maybe you have an idea now?",
             "* Barracuda notices this, his defense increases!\n* Though he holds back to do so." }
     elseif name == "Convince" then
-        -- Loop through all enemies
+        -- alters stats and (TBD) starts final attack
         self.attack = self.attack + 3
         self:statusMessage("damage", 3, { 1, 0.5, 0.5 })
         self.dialogue_override = ""
@@ -186,7 +218,7 @@ function Barracuda:onAct(battler, name)
             self.attack = self.attack - 3
             self:statusMessage("damage", -3, { 1, 0.5, 0.5 })
             return {
-                "* Honeywisp threw a Nectar filled Egg at Barracuda in hopes to calm him down.\n* Barracuda appreciates it!",
+                "* Honeywisp threw Nectar at Barracuda in hopes to calm him down.\n* Barracuda appreciates it!",
                 "* Barracuda's Attack decreases for this turn!\n* Use it to your advantage!" }
         elseif battler.chara.id == "SD" then
             -- Wastes SD's turn
@@ -205,6 +237,7 @@ end
 
 function Barracuda:update()
     super.update(self)
+    -- To be fixed, should bop barracuda up and down (see jevil from deltarune chapter 1)
     if Game:getFlag("Convinced", false) == true or self.transformed == true then
         if not self.original_y == nil then
             self.frames = self.frames + 1

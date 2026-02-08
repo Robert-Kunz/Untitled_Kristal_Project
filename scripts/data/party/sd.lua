@@ -38,7 +38,7 @@ function character:init()
     -- Base stats (saved to the save file)
     self.stats = {
         health = 240,
-        attack = 6,
+        attack = 15,
         defense = 2,
         magic = 5,
     }
@@ -52,7 +52,7 @@ function character:init()
     self.weapon_icon = "ui/menu/equip/vine"
 
     -- Equipment (saved to the save file)
-    self:setWeapon("basic_vine")
+    self:setWeapon("Default")
     self:setArmor(1, "amber_card")
     --self:setArmor(2, "amber_card")
 

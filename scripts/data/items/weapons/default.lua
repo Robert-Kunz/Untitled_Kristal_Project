@@ -4,7 +4,7 @@ function item:init()
     super.init(self)
 
     -- Display name
-    self.name = "Default"
+    self.name = "Nothing"
 
     -- Item type (item, key, weapon, armor)
     self.type = "weapon"
@@ -17,7 +17,7 @@ function item:init()
     self.shop = ""
     -- Menu description
     -- apperantly senescence is the process leaves go through while going from green to orange
-    self.description = "You against the world with just your own Body."
+    self.description = "You against the world with just your own Body.\n[Good for a challenge run!]"
 
     -- Default shop price (sell price is halved)
     self.price = 0
@@ -35,7 +35,10 @@ function item:init()
 
     -- Equip bonuses (for weapons and armor)
     self.bonuses = {
-        attack = 10,
+        health = 10,
+        attack = 0,
+        defense = 2,
+        magic = -3
     }
 
     -- Equippable characters (default true for armors, false for weapons)

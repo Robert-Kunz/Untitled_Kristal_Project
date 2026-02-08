@@ -7,7 +7,7 @@ function Challenge:init()
     self.text = "* 'Of course... of course on my birthday...'"
 
     -- Battle music
-    self.music = "Barracuda"
+    self.music = "battle/Barracuda"
     -- Enables the purple grid battle background
     self.background = true
 

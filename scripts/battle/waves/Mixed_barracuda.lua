@@ -8,7 +8,7 @@ end
 function mixed_grow:onStart()
     self:setArenaSize(300, 200)
     for _, v in ipairs(self:getAttackers()) do
-        if v.id == "Fifty_Birthday" or v.id == "Barracuda" then
+        if v.id == "Fifty_Birthday" or v.id == "Fifty" or v.id == "Barracuda" then
             -- Every second...
             self.timer:every(1, function()
                 local x, y = v:getRelativePos(v.width / 2, v.height / 2)

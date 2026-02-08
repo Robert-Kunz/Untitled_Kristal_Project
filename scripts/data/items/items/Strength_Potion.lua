@@ -12,7 +12,7 @@ function item:init()
     self.type = "item"
 
     -- Battle description
-    self.effect = "attack \ngo \nbrrr"
+    self.effect = "attack\ngo\nbrrr"
     -- Shop description
     self.shop = "Steroids"
     -- Menu description

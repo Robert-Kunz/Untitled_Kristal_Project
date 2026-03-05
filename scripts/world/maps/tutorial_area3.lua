@@ -10,7 +10,7 @@ return {
   tilewidth = 20,
   tileheight = 20,
   nextlayerid = 6,
-  nextobjectid = 110,
+  nextobjectid = 112,
   properties = {
     ["name"] = "Test Map - Room 1"
   },
@@ -408,6 +408,32 @@ return {
           shape = "point",
           x = 429.333,
           y = 502.667,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 110,
+          name = "placeH",
+          type = "",
+          shape = "point",
+          x = 304,
+          y = 345,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 111,
+          name = "placeS",
+          type = "",
+          shape = "point",
+          x = 550,
+          y = 341,
           width = 0,
           height = 0,
           rotation = 0,

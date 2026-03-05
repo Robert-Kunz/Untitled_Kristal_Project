@@ -49,15 +49,25 @@ return {
         elseif choicer == 4 then
             Assets.playSound("phone", 0.7)
             cutscene:wait(1)
-            -- Binary says: "Dark Darker yet Darker. My name is [MISSINGNO.]"
-            cutscene:text("* 01000100 01100001 01110010 01101011 00100000 01000100", nil, "missingno")
-            cutscene:text("* 01100001 01110010 01101011 01100101 01110010 00100000", nil, "missingno")
-            cutscene:text("* 01111001 01100101 01110100 00100000 01000100 01100001", nil, "missingno")
-            cutscene:text("* 01110010 01101011 01100101 01110010 00101110 00001010", nil, "missingno")
-            cutscene:text("* 01001101 01111001 00100000 01101110 01100001 01101101", nil, "missingno")
-            cutscene:text("* 01100101 00100000 01101001 01110011 00100000 01011011", nil, "missingno")
-            cutscene:text("* 01001101 01001001 01010011 01010011 01001001 01001110", nil, "missingno")
-            cutscene:text("* 01000111 01001110 01001111 00101110 01011101", nil, "missingno")
+            if math.random(1, 2) == 1 then
+                -- Binary says: "Dark Darker yet Darker. My name is [MISSINGNO.]"
+                cutscene:text("* 01000100 01100001 01110010 01101011 00100000 01000100", nil, "missingno")
+                cutscene:text("* 01100001 01110010 01101011 01100101 01110010 00100000", nil, "missingno")
+                cutscene:text("* 01111001 01100101 01110100 00100000 01000100 01100001", nil, "missingno")
+                cutscene:text("* 01110010 01101011 01100101 01110010 00101110 00001010", nil, "missingno")
+                cutscene:text("* 01001101 01111001 00100000 01101110 01100001 01101101", nil, "missingno")
+                cutscene:text("* 01100101 00100000 01101001 01110011 00100000 01011011", nil, "missingno")
+                cutscene:text("* 01001101 01001001 01010011 01010011 01001001 01001110", nil, "missingno")
+                cutscene:text("* 01000111 01001110 01001111 00101110 01011101", nil, "missingno")
+            else
+                cutscene:text("[speed:0.2][font:wingdings]ENTRY NUMBER 17", nil, "gaster")
+                cutscene:text("[speed:0.2][font:wingdings]DARK, DARKER, YET DARKER", nil, "gaster")
+                cutscene:text("[speed:0.2][font:wingdings]THE DARKNESS KEEPS GROWING DEEPER", nil, "gaster")
+                cutscene:text("[speed:0.2][font:wingdings]THE DARKNESS CUTS THROUGH THE SHADOWS", nil, "gaster")
+                cutscene:text("[speed:0.2][font:wingdings]THIS NEXT EXPERIMENT SEEMS VERY, VERY INTERESTING", nil,
+                    "gaster")
+                cutscene:text("[speed:0.2][font:wingdings]WHAT DO YOU TWO THINK?", nil, "gaster")
+            end
             cutscene:wait(1)
             cutscene:text("* The line went dry...", nil, nil)
         end

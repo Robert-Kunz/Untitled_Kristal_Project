@@ -46,29 +46,16 @@ function actor:init()
 end
 
 function actor:onTextSound()
-    --if self.voice_timer == 0 then
-    --    local rand = Utils.random(0, 8, 1) + 1
-
-    --     local pitchrandom = (0.86 + Utils.random(0.35))
-    --     local soundindex = "voice/missingno/glitch_" .. rand
-
-    --    Assets.stopAndPlaySound(soundindex, 0.7, pitchrandom)
-
-    --    self.voice_timer = 3
-    --end
-    -- plays a random sound with a random pitch and speed(i think) from the catalogue of sounds
-    -- as the "voice"
     if self.voice_timer == 0 then
-        local rand = Utils.random(0, 1, 1) + 1
+        local rand = Utils.random(0, 6, 1) + 1
         Kristal.Console:log(rand)
-        local file_stuff = "voice/gaster/gaster_" .. rand
+        local file_stuff = "voice/gaster/wingding_" .. rand
         Kristal.Console:log(file_stuff)
         local snd = Utils.pick({ file_stuff })
         local pitch = 0.80 + Utils.random(0.2)
         Assets.playSound(snd, 1, 1)
         self.voice_timer = 0
     end
-    --self.voice_timer = self.voice_timer - 0.5
     return true
 end
 

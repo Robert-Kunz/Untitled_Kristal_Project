@@ -5,6 +5,7 @@ return {
     ---@param cutscene BattleCutscene
     low_health = function(cutscene, battler, enemy)
         -- Open textbox and wait for completion
+        Game.battle:setState("CUTSCENE")
         local enemies = Game.battle.enemies
         cutscene:text("* You make a stance infront of Barracuda")
         cutscene:text("* Look, Barracuda, whatever you're trying to do\n* it won't work", "Annoyed", "SD")
@@ -43,6 +44,7 @@ return {
         enemy:setAnimation("awakened")
         --cutscene:wait(3.5)
         cutscene:text("* AND LEAVE!", "awakened", "Barracuda")
+        Game:setFlag("Convinced", false)
     end,
 
     Deletion = function(cutscene, battler, enemy)
@@ -55,6 +57,7 @@ return {
         cutscene:text("* Well shit\n* [face:Tired](Didn't expect him to block that, fuck!)", "idle", "SD")
         for _, v in pairs(enemies) do -- this is a for loop
             if v.id == "Barracuda" then
+                enemy.Deletion_Barracuda = true
                 enemy:setAnimation("idle")
             end
         end

@@ -31,6 +31,7 @@ function character:init()
     self:addSpell("Brewing")
     self:addSpell("Deletion")
     self:addSpell("helth")
+    self:addSpell("Dodging")
 
     -- Current health (saved to the save file)
     self.health = 240
@@ -96,12 +97,38 @@ function character:init()
     -- Battle position offset (optional)
     self.battle_offset = { 2, 1 }
     -- Head icon position offset (optional)
-    self.head_icon_offset = { -5, -1 }
+    self.head_icon_offset = { 0, 0 }
     -- Menu icon position offset (optional)
     self.menu_icon_offset = { 0, 0 }
 
     -- Message shown on gameover (optional)
     self.gameover_message = true
+
+    self.chat_messages = {
+        ["GENERIC/INTRO/1"] = "Let's waste em!",
+        ["GENERIC/INTRO/2"] = "Mercy might be an option...",
+        ["GENERIC/INTRO/3"] = ("Don't fuck this up, " + Game.save_name),
+
+        ["GENERIC/IDLE/1"] = "...",
+        ["GENERIC/IDLE/2"] = "Dude, do something",
+        ["GENERIC/IDLE/3"] = "Okay why take a piss break now?",
+
+        ["GENERIC/HURT/1"] = (Game.save_name + "!"),
+        ["GENERIC/HURT/2"] = "BITCH",
+
+        ["GENERIC/TAUNT/1"] = "I've fought worse!",
+        ["GENERIC/TAUNT/2"] = "FOR THE UNIVERSE!",
+        ["GENERIC/TAUNT/3"] = "You think you're special? You're still [color:red]mortal[color:reset]",
+        ["GENERIC/TAUNT/4"] = "You're so fat, they might mistake you for a truck!",
+
+        ["GENERIC/CHEER/1"] = "Hell yeah!",
+        ["GENERIC/CHEER/2"] = "That wasn't enough to beat me down.",
+        ["GENERIC/CHEER/3"] = "Good, keep healing em.",
+
+        ["GENERIC/RAGE/1"] = "FUCK!",
+        ["GENERIC/RAGE/2"] = "WE'RE LOSING, PEOPLE.",
+        ["GENERIC/RAGE/3"] = Game.save_name + ", pull yourself together..."
+    }
 end
 
 --function character:canEquip(item, slot_type, slot_index)

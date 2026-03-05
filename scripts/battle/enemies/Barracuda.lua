@@ -11,7 +11,7 @@ function Barracuda:init()
     -- Enemy health
     self.max_health = 7000
     -- 1050 is 15% of max hp
-    self.health = 7000
+    self.health = 1051
     -- Enemy attack (determines bullet damage)
     self.attack = 10
     -- Enemy defense (usually 0)
@@ -60,9 +60,10 @@ function Barracuda:init()
     -- Register party act with Ralsei called "Tell Story"
     -- (second argument is description, usually empty)
     self:registerAct("Harmonize")
+    self:registerAct("Convince")
     Game:setFlag("Convinced", false)
     Game:setFlag("low", false)
-    Game:setFlag("Deletion_Barracuda", false)
+    self.Deletion_Barracuda = false
 end
 
 function Barracuda:onTurnStart()
@@ -110,8 +111,8 @@ function Barracuda:onTurnStart()
         self.start = false
     end
 
-    if Game:getFlag("Deletion_Barracuda", true) == true then
-        Game:setFlag("Deletion_Barracuda", false)
+    if self.Deletion_Barracuda == true then
+        self.Deletion_Barracuda = false
     end
 end
 
@@ -124,9 +125,14 @@ function Barracuda:onTurnEnd()
     end
 end
 
+function Barracuda:getDamageSound()
+    return "JSAB_hit"
+end
+
 function Barracuda:getTarget()
     -- If Barracuda got hit with deletion in the same round, forces SD to get targetted and also inflicts rage
-    if Game:getFlag("Deletion_Barracuda", false) == true then
+    if self.Deletion_Barracuda == true then
+        self.dialogue_override = "YOU WILL PAY"
         self.Rage = true
         self.attack = self.attack + 3
         self.defense = self.defense - 3
@@ -198,7 +204,6 @@ function Barracuda:onAct(battler, name)
         self:statusMessage("damage", 3, { 1, 0.5, 0.5 })
         self.dialogue_override = ""
         Game.battle:startActCutscene("Barracuda", "Convince")
-        Game:setFlag("Convinced", true)
         self:heal(math.huge)
         return
     elseif name == "Standard" then --X-Action

@@ -2,13 +2,14 @@ local spores, super = Class(Wave)
 function spores:init()
     super.init(self)
     self.time = 10
+    self.arena_width = 300
+    self.arena_height = 150
 end
-
 
 function spores:onStart()
     -- Every 0.33 seconds...
     self:setArenaSize(300, 150)
-    self.timer:every(1/2, function()
+    self.timer:every(1 / 2, function()
         -- Our X position is offscreen, to the right
         local x = Utils.random(Game.battle.arena.left, Game.battle.arena.right)
         -- Get a random Y position between the top and the bottom of the arena
@@ -20,7 +21,6 @@ function spores:onStart()
         -- Dont remove the bullet offscreen, because we spawn it offscreen
         bullet.remove_offscreen = false
     end)
-    
 end
 
 function spores:update()

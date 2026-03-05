@@ -13,7 +13,7 @@ function Challenge:init()
 
     -- Add the dummy enemy to the encounter
     self:addEnemy("Fifty")
-    self:addEnemy("Barracuda")
+    self:addEnemy("Barracuda", 5 / 6 * 640, 300)
     self:addEnemy("Test")
 
     -- removes the end message

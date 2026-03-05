@@ -1,4 +1,9 @@
 local grow, super = Class(Wave)
+function grow:init()
+    super.init(self)
+    self.arena_width = 150
+    self.arena_height = 200
+end
 
 function grow:onStart()
     self:setArenaSize(150, 200)

@@ -14,7 +14,7 @@ function vanished:init()
 end
 
 function vanished:onStatus(battler)
-    battler:setAnimation("vanish")
+    battler:setAnimation("battle/itemready")
 end
 
 function vanished:onHurt(battler)

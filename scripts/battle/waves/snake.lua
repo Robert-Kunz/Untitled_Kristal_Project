@@ -1,17 +1,33 @@
 local snake, super = Class(Wave)
+function snake:init(
+)
+    super.init(self)
+    self.time = 10
+    self.arena_width = 300
+    self.arena_height = 300
+end
 
-function snake:onStart()
+function snake:onStart(dir, segments, target)
+    local x = 650
+    local y = 240
     -- Every 0.33 seconds...
-    self.timer:every(1 / 3, function()
-        -- Our X position is offscreen, to the right
-        local x = SCREEN_WIDTH - 40
-        -- Get a random Y position between the top and the bottom of the arena
-        local y = Utils.random(Game.battle.arena.top, Game.battle.arena.bottom)
-        -- Spawn smallbullet going left with speed 8 (see scripts/battle/bullets/smallbullet.lua)
-        self:spawnBullet("snaketip", x, y, math.rad(180), 8)
+    segments = 6
+    dir = dir or 180
+    target = target or Game.battle.soul
 
-        -- Dont remove the bullet offscreen, because we spawn it offscreen
-    end)
+    self.worm = {}
+    local head = self:spawnBullet("snake", x, y, dir, 1, "tip", target, nil)
+    local lastsegment = head
+    table.insert(self.worm, 1, head)
+    local lastindex = 1
+    for i = 1, segments do
+        local segment = self:spawnBullet("snake", x, y, dir, 1, "segment", target, lastsegment)
+        lastsegment = segment
+        table.insert(self.worm, i + 1, segment)
+        lastindex = i + 1
+    end
+
+    self.timer:after(1, function() head.should_turn = true end)
 end
 
 function snake:update()

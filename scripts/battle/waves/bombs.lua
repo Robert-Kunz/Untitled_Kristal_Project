@@ -3,6 +3,8 @@ local Bombs, super = Class(Wave)
 function Bombs:init()
     super.init(self)
     self.time = 10
+    self.arena_width = 300
+    self.arena_height = 150
 end
 
 function Bombs:onStart()

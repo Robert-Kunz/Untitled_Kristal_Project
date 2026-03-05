@@ -1,0 +1,45 @@
+{
+    "id": "everparty",
+    "version": "v1.0.0",
+    "engineVer": "v0.10.0-dev",
+    "authors": [
+        "Vesselbound"
+    ],
+    "config": {
+        // This option determines the UI style of EverParty. Accepted Values:
+        // "STANDARD" - MoreParty/infinitely stacking rows of characters. The quintessential, but definitely kinda ugly especially with parties that go beyond 2 rows. The default.
+        // "ROULETTE" - Rows like Standard, but with a max of 2- instead swapping out rows like a roulette as you advance through action selection. Will support technically infinite members, but you should definitely
+        ///     enable the "mini_healthbar" config if you use this mode otherwise tracking character health will be near impossible.
+        // "BATTLECARD" - One row, with actionboxes shrinking to just display the character head until selected. Also recommend using "mini_healthbar" for this.
+        // "CLASSIC" - Condensed rows, scrolling options- MoreBattle inspired.
+        "ui_style": "BATTLECARD",
+        // This option (when in Standard or Roulette mode) makes it so that parties divisible by 4 display 2 characters on each row rather than 4 on one which is cramped or 3&1 which would be upsettingly uneven.
+        "2x_mode": true,
+        // This option toggles the mini healthbar underneath each battler, useful for roulette mode or when the screen gets basically illegible. Will also display mini resource bars if said bars are present on a character.
+        "mini_healthbar": true,
+        // Limits the max amount of party battlers. By default 0, which means there is no limit.
+        // A note: Values between 1-3 won't do anything, to avoid messing with vanilla behavior.
+        "party_limit": 0,
+        // BATTLECARD ONLY
+        // Replicates the stupid ingame chat from that one deltarune shitpost that inspired this library.
+        "ingame_chat": false,
+        // Scrambles the party battler turn order at the start of every battle. Good luck, soldier- you'll need it.
+        "chaos_mode": false
+    },
+    "keybinds": [
+        {
+            "name": "Prev. HP Bar",
+            "id": "overworld_previous_keybind",
+            "keys": [
+                ","
+            ]
+        },
+        {
+            "name": "Next HP Bar",
+            "id": "overworld_next_keybind",
+            "keys": [
+                "."
+            ]
+        },
+    ]
+}

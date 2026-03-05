@@ -7,6 +7,8 @@ function SporesButGood:init()
 
     -- The duration of our wave, in seconds. (Defaults to `5`)
     self.time = 10
+    self.arena_width = 200
+    self.arena_height = 200
 end
 
 function SporesButGood:onStart()

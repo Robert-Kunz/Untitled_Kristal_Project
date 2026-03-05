@@ -44,12 +44,6 @@ function spell:onCast(user, target)
         end
         local buster_finished = false
         local anim_finished = false
-        local function finishAnim()
-            anim_finished = true
-            if buster_finished then
-                Game.battle:finishAction()
-            end
-        end
         -- Can add a delay between when the blast is sent out and the animation is finished
         Game.battle.timer:after(0, function()
             Assets.playSound("rudebuster_swing")
@@ -72,10 +66,7 @@ function spell:onCast(user, target)
                     user:setAnimation("battle/idle")
                     Game.battle:startActCutscene("Barracuda", "Deletion")
                 end
-                buster_finished = true
-                if anim_finished then
-                    Game.battle:finishAction()
-                end
+                Game.battle:finishAction()
             end)
             blast.layer = BATTLE_LAYERS["above_ui"]
             Game.battle:addChild(blast)

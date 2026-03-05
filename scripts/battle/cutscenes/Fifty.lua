@@ -49,6 +49,8 @@ return {
         cutscene:text("* But you wouldn't believe me!", "Annoyed", "Fifty")
         cutscene:text("* Isn't that right, Sushi-dieb?", "Smirk", "Fifty")
         cutscene:text("* Go to hell, Fifty", "Annoyed", "SD")
+        Game.battle.encounter:addEnemy("Test")
+        Game.battle.encounter:addEnemy("Test")
     end,
     Fish_Tired = function(cutscene, battler, enemy)
         -- Open textbox and wait for completion

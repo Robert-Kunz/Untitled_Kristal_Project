@@ -56,4 +56,8 @@ function item:onUnequip(character, replacement)
     return super.onUnequip(self, character, replacement)
 end
 
+function item:getAttackSound()
+    return "whip_throw_only"
+end
+
 return item

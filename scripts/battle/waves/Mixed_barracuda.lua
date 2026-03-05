@@ -3,6 +3,8 @@ local mixed_grow, super = Class(Wave)
 function mixed_grow:init()
     super.init(self)
     self.time = 15
+    self.arena_width = 300
+    self.arena_height = 200
 end
 
 function mixed_grow:onStart()

@@ -12,7 +12,7 @@ function Barracuda:init()
     self.background = true
 
     -- Add the dummy enemy to the encounter
-    self:addEnemy("Barracuda")
+    self:addEnemy("Barracuda", 5 / 6 * 640, 240)
 
     --- Uncomment this line to add another!
     --self:addEnemy("dummy")

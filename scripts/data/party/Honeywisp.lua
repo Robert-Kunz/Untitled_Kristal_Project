@@ -77,6 +77,7 @@ function character:init()
     self.menu_icon = "party/Honeywisp/head"
     -- Path to head icons used in battle
     self.head_icons = "party/Honeywisp/icon"
+    self.heart_sprite = "party/Honeywisp/heart_sprite"
     -- Name sprite
     self.name_sprite = nil
 
@@ -98,12 +99,38 @@ function character:init()
     -- Battle position offset (optional)
     self.battle_offset = { 2, 1 }
     -- Head icon position offset (optional)
-    self.head_icon_offset = { -5, -1 }
+    self.head_icon_offset = { 0, -2 }
     -- Menu icon position offset (optional)
     self.menu_icon_offset = { 0, 0 }
 
     -- Message shown on gameover (optional)
     self.gameover_message = true
+
+    self.chat_messages = {
+        ["GENERIC/INTRO/1"] = "L-let's do this!",
+        ["GENERIC/INTRO/2"] = "I-is Fighting necessary...?",
+        ["GENERIC/INTRO/3"] = "I-I'll support...",
+        ["GENERIC/INTRO/4"] = "For my friends... for [color:pink]Winged[color:reset]...",
+
+        ["GENERIC/IDLE/1"] = "*humming a small tune*",
+        ["GENERIC/IDLE/2"] = "I-I hope [color:pink]winged[color:reset]'s fine...",
+        ["GENERIC/IDLE/3"] = "Are we waiting on something...?",
+
+        ["GENERIC/HURT/1"] = "M-my Egg!",
+        ["GENERIC/HURT/2"] = "A-Almost didn't Block that...",
+
+        ["GENERIC/TAUNT/1"] = "S-sorry...",
+        ["GENERIC/TAUNT/2"] = "Y-You can't give me traumas, I've already got 9!",
+        ["GENERIC/TAUNT/3"] = "H-hope that didn't hurt too much...",
+
+        ["GENERIC/CHEER/1"] = "Y-you're up! Great...",
+        ["GENERIC/CHEER/2"] = "Y-you want more nectar?",
+        ["GENERIC/CHEER/3"] = ":D",
+
+        ["GENERIC/RAGE/1"] = "I-I'm sorry...",
+        ["GENERIC/RAGE/2"] = "I'll be right back!",
+        ["GENERIC/RAGE/3"] = "P-Please don't die..."
+    }
 end
 
 function character:autoHealAmount()

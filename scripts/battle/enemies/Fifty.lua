@@ -23,11 +23,11 @@ function Fifty:init()
 
         -- List of possible wave ids, randomly picked each turn
         self.waves = {
-            "spores",
-            "bombs",
-            "Fgrow",
-            "Mixed_barracuda",
-            "Sporesbutgood"
+            "Fifty/spores",
+            "Barracuda/bombs",
+            "Fifty/Fgrow",
+            "Barracuda/Mixed_barracuda",
+            "Fifty/Sporesbutgood"
         }
 
         -- Dialogue randomly displayed in the enemy's speech bubble
@@ -76,9 +76,9 @@ function Fifty:init()
 
         -- List of possible wave ids, randomly picked each turn
         self.waves = {
-            "test",
-            "spores",
-            "spores"
+            "Sushi/test",
+            "Fifty/spores",
+            "Fifty/Sporesbutgood"
         }
 
         -- Dialogue randomly displayed in the enemy's speech bubble

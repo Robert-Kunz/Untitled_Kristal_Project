@@ -23,10 +23,10 @@ function Dummy:init()
 
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
-        "basic",
-        "aiming",
-        "movingarena",
-        "mix"
+        "misc/basic",
+        "misc/aiming",
+        "misc/movingarena",
+        "misc/mix"
     }
 
     -- Dialogue randomly displayed in the enemy's speech bubble
@@ -50,7 +50,7 @@ function Dummy:init()
     self:registerAct("Smile")
     -- Register party act with Ralsei called "Tell Story"
     -- (second argument is description, usually empty)
-    self:registerAct("Tell Story", "", {"Fifty"})
+    self:registerAct("Tell Story", "", { "Fifty" })
 end
 
 function Dummy:onAct(battler, name)
@@ -64,7 +64,6 @@ function Dummy:onAct(battler, name)
             "* You smile.[wait:5]\n* The dummy smiles back.",
             "* It seems the dummy just wanted\nto see you happy."
         }
-
     elseif name == "Tell Story" then
         -- Loop through all enemies
         for _, enemy in ipairs(Game.battle.enemies) do
@@ -72,7 +71,6 @@ function Dummy:onAct(battler, name)
             enemy:setTired(true)
         end
         return "* You and Ralsei told the dummy\na bedtime story.\n* The enemies became [color:blue]TIRED[color:reset]..."
-
     elseif name == "Standard" then --X-Action
         -- Give the enemy 50% mercy
         self:addMercy(50)
@@ -85,7 +83,7 @@ function Dummy:onAct(battler, name)
             return
         else
             -- Text for any other character (like Noelle)
-            return "* "..battler.chara:getName().." straightened the\ndummy's hat."
+            return "* " .. battler.chara:getName() .. " straightened the\ndummy's hat."
         end
     end
 

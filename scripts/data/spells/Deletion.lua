@@ -11,7 +11,8 @@ function spell:init()
     -- Battle description
     self.effect = "It's...\nGone..."
     -- Menu description
-    self.description = "You wouldn't... \nuse this spell... right?"
+    self.description =
+    "A strong Spell capable of [color:red]deleting[color:reset] any Enemy.\nDraws Power from the User's Soul."
 
     -- TP cost
     self.cost = 100

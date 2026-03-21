@@ -28,8 +28,9 @@ function Barracuda:init()
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
         --"Testing_Bullet",
-        "bombs",
-        "grow"
+        "Barracuda/bombs",
+        "Barracuda/grow",
+        "Barracuda/snake"
     }
 
     -- Dialogue randomly displayed in the enemy's speech bubble
@@ -118,10 +119,9 @@ end
 
 function Barracuda:onTurnEnd()
     if self.health < self.max_health * 0.15 + 1 then
-        Game.battle:startCutscene("Barracuda", "low_health")
-        Game.battle:setState("CUTSCENE")
-        self.transformed = true
-        self:heal(math.huge)
+        self.wave_override = "Barracuda/bombs"
+        --self.transformed = true
+        --self:heal(math.huge)
     end
 end
 

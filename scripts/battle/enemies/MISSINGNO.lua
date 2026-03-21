@@ -23,8 +23,9 @@ function MISSINGNO:init()
     self.spare_points = 0
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
-        "bombs",
-        "smashcut",
+        "Barracuda/bombs",
+        "misc/smashcut",
+        --"Missingno/skyattackcharge"
     }
 
     -- Dialogue randomly displayed in the enemy's speech bubble
@@ -59,6 +60,8 @@ function MISSINGNO:init()
     self.intensity = 0
     self.flash_timer = 0
     self.glitched_out = false
+
+    self:registerAct("Protect")
 end
 
 function MISSINGNO:getDamageSound()
@@ -81,18 +84,18 @@ function MISSINGNO:onTurnStart()
     if self.random_stuff == 1 then
         self.name = "Barracuda"
         self:setAnimation("Barracuda")
-        self.wave_override = "glitch_barracuda"
+        self.wave_override = "Missingno/glitch_barracuda"
         self.dialogue_override = "TRYNA GET TO BLIXER HUH?"
     elseif self.random_stuff == 2 then
         self.name = "Sushi"
         self:setAnimation("Sushi")
-        self.wave_override = "test"
+        self.wave_override = "Sushi/test"
         self.dialogue_override = "It's Fishing time"
     elseif self.random_stuff == 3 then
         self.name = "Barracuda"
         self:setAnimation("Barracuda")
-        self.wave_override = "bombs"
-        self.dialogue_override = "TRYNA GET TO BLIXER HUH?"
+        self.wave_override = "Barracuda/bombs"
+        self.dialogue_override = "MUCH.}-- self.check = AT"
     elseif self.random_stuff == 4 then
     elseif self.random_stuff == 5 then
     end
@@ -109,7 +112,16 @@ function MISSINGNO:onTurnEnd()
 end
 
 function MISSINGNO:getTarget()
-    return super.getTarget(self)
+    -- If previous turn sky attack prepare was used, forces the game to target everyone
+    if self.glitched_out == true then
+        self.dialogue_override = "Wild missingno used Sky attack!"
+        Game.battle:target(Game.battle:getPartyBattler("SD"))
+        Game.battle:target(Game.battle:getPartyBattler("HW"))
+        Game.battle:target(Game.battle:getPartyBattler("Susie"))
+        return "ALL"
+    else
+        return super.getTarget(self)
+    end
 end
 
 function MISSINGNO:hurt(amount, battler, on_defeat, color, show_status, attacked)
@@ -179,6 +191,8 @@ function MISSINGNO:onAct(battler, name)
             return { (self.name + "...? - AT " + self.attack + " DF " + self.defense +
                 "\nThe Transformed"), ("[wait:7]* ...That isn't the real [color:yellow]" + self.name + "[color:reset]...\n* Is it?") }
         end
+    elseif name == "Protect" then
+        Game.battle:startActCutscene("Missingno", "Protect")
     elseif name == "Standard" then --X-Action
         if battler.chara.id == "Honeywisp" then
             -- Heals Barracuda, though also weakens him for the turn

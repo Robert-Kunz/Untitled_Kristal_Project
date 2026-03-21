@@ -37,6 +37,8 @@ function snaketip:init(x, y, dir, speed, bodypart, target, parent)
     self.child_part = nil
 
     self.target = target
+    self.timer = self:addChild(Timer())
+    self.timer:every(1, function() self.target = { x = math.random(200, 650), y = math.random(100, 490) } end)
 
     self.should_turn = false
 
@@ -74,7 +76,7 @@ function snaketip:update()
     self.physics.speed = MathUtils.approach(self.physics.speed, self.target_speed, DTMULT / 6)
     if (self.should_turn) then
         self.rotation = MathUtils.approachAngle(self.rotation,
-            MathUtils.angle(self.x, self.y, self.target.x, self.target.y), DTMULT / 16)
+            MathUtils.angle(self.x, self.y, self.target.x, self.target.y), DTMULT / 8)
     end
 end
 

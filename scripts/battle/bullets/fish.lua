@@ -13,7 +13,6 @@ end
 
 function fish:update()
     -- For more complicated bullet behaviours, code here gets called every update
-
     super.update(self)
 end
 

@@ -12,7 +12,7 @@
         ///     enable the "mini_healthbar" config if you use this mode otherwise tracking character health will be near impossible.
         // "BATTLECARD" - One row, with actionboxes shrinking to just display the character head until selected. Also recommend using "mini_healthbar" for this.
         // "CLASSIC" - Condensed rows, scrolling options- MoreBattle inspired.
-        "ui_style": "BATTLECARD",
+        "ui_style": "STANDARD",
         // This option (when in Standard or Roulette mode) makes it so that parties divisible by 4 display 2 characters on each row rather than 4 on one which is cramped or 3&1 which would be upsettingly uneven.
         "2x_mode": true,
         // This option toggles the mini healthbar underneath each battler, useful for roulette mode or when the screen gets basically illegible. Will also display mini resource bars if said bars are present on a character.

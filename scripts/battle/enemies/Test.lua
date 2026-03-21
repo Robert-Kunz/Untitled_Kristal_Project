@@ -23,8 +23,8 @@ function Test:init()
 
     -- List of possible wave ids, randomly picked each turn
     self.waves = {
-        "fish",
-        "test",
+        "Sushi/fish",
+        "Sushi/test",
     }
 
     -- Dialogue randomly displayed in the enemy's speech bubble

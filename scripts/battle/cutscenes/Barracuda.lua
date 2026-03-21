@@ -44,7 +44,7 @@ return {
         enemy:setAnimation("awakened")
         --cutscene:wait(3.5)
         cutscene:text("* AND LEAVE!", "awakened", "Barracuda")
-        Game:setFlag("Convinced", false)
+        Game:setFlag("Convinced", true)
     end,
 
     Deletion = function(cutscene, battler, enemy)
@@ -61,6 +61,5 @@ return {
                 enemy:setAnimation("idle")
             end
         end
-        Game:setFlag("Deletion_Barracuda", true)
     end
 }

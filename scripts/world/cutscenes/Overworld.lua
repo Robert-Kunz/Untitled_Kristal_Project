@@ -96,7 +96,7 @@ return {
                 cutscene:text(
                     "* [shake:3][speed:2][font:wingdings]DARK DARKER YET DARKER DARK DARKER YET DARKER DARK DARKER YET DARKER DARK DARKER YET DARKER DARK DARKER YET DARKER DARK DARKER YET DARKER DARK DARKER YET DARKER DARK DARKER YET DARKER DARK DARKER YET DARKER DARK DARKER YET DARKER DARK DARKER YET DARKER DARK DARKER YET DARKER DARK DARKER YET DARKER DARK DARKER YET DARKER DARK DARKER YET DARKER",
                     nil, "gaster", { auto = true, noskip = true })
-                error("[color:red]YOU ARE NOT ALLOWED THIS NAME[color:reset]")
+                error("YOU ARE NOT ALLOWED THIS NAME")
             else
                 cutscene:text("* [speed:0.4]YOU REALLY ARE AS BAD AS THEY DESCRIBED...", nil, "gaster")
             end

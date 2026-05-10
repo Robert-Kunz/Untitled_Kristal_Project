@@ -54,7 +54,7 @@ function character:init()
     self.weapon_icon = "ui/menu/equip/sword"
 
     -- Equipment (saved to the save file)
-    self:setWeapon("Egg")
+    self:setWeapon("Nectar_Egg")
     self:setArmor(1, "amber_card")
     --self:setArmor(2, "amber_card")
 
@@ -135,6 +135,36 @@ end
 
 function character:autoHealAmount()
     return math.huge
+end
+
+function character:hasAct()
+    return Game:getFlag("Solo_run", false)
+end
+
+function character:canEquip(item, slot_type, slot_index)
+    if item then
+        return super.canEquip(self, item, slot_type, slot_index)
+    else
+        local item
+        if slot_type == "armor" and item == "PS" then
+            item = self:getArmor(slot_index)
+        else
+            return true
+        end
+        return false
+    end
+end
+
+function character:getReaction(item, user)
+    if item or user.id ~= self.id then
+        if self:getArmor(2) == "PS" then
+            return { { 1, 0, 0 }, "YOU WILL NOT REMOVE ME" }
+        else
+            return super.getReaction(self, item, user)
+        end
+    elseif self:getArmor(2) == "PS" then
+        return { { 1, 0, 0 }, "YOU WILL NOT REMOVE ME" }
+    end
 end
 
 return character

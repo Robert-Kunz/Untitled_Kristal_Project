@@ -9,8 +9,8 @@ function Fifty:init()
     self:setActor("FiftyN")
     if Game:getFlag("Birthday", false) == true then
         -- Enemy health
-        self.max_health = 4500
-        self.health = 4500
+        self.max_health = 2500
+        self.health = 2500
         -- Enemy attack (determines bullet damage)
         self.attack = 13
         -- Enemy defense (usually 0)
@@ -62,8 +62,8 @@ function Fifty:init()
         self:registerAct("Tire")
     else
         -- Enemy health
-        self.max_health = 4000
-        self.health = 4000
+        self.max_health = 2000
+        self.health = 2000
         -- Enemy attack (determines bullet damage)
         self.attack = 10
         -- Enemy defense (usually 0)
@@ -145,12 +145,12 @@ function Fifty:onAct(battler, name)
         if Game:getFlag("Birthday", false) == true then
             self.dialogue_override = {
                 "Really? Checking me?",
-                "You really did get rusty, sd."
+                "You really did get rusty, sd.",
+                "Must be your Age."
             }
             return { ("* FIFTYSET80 - AT " + self.attack + " DF " + self.defense +
                 "\n* Stupid Birthday crasher..."),
-                "* Shows signs of being able to dodge\n* Maybe you can [color:yellow]distract[color:reset] him?",
-                "Must be your Age." }
+                "* Shows signs of being able to dodge\n* Maybe you can [color:yellow]distract[color:reset] him?", }
         else
             self.dialogue_override = {
                 "Really? Checking me?",

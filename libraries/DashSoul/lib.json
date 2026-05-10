@@ -1,0 +1,13 @@
+{
+    "id": "dash_soul",
+    "version": "1.0",
+    "engineVersion": "0.8.1-dev",
+    "authors": [
+        "Elioze"
+    ],
+    "config":{
+        "dash_count" : true,
+        "dash_move" : false,
+        "rest_dash" : true
+    }
+}

@@ -9,11 +9,15 @@ return {
         local HW = Game.battle:getPartyBattler("Honeywisp")
         local dx, dy = SD:getRelativePos(SD.width / 2, SD.height / 2)
         local Hx, Hy = HW:getRelativePos(HW.width / 2, HW.height / 2)
+        local heartburst = HeartBurst(dx, dy)
         local soul = Sprite("player/heart_dodge", dx + 5, dy + 5)
         soul:setOrigin(0.5, 0.5)
         Game.battle:addChild(soul)
+        Game.battle:addChild(heartburst)
         soul.layer = 1000
+        heartburst.layer = 1001
         soul.color = { 1, 0, 0 }
+        heartburst.color = { 1, 0, 0 }
         cutscene:wait(2)
         cutscene:wait(cutscene:slideTo(soul, Hx + 100, Hy, 0.5))
         soul:flash()

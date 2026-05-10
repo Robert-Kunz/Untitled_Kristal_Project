@@ -21,9 +21,15 @@ function Challenge:init()
 
     --- Uncomment this line to add another!
     --self:addEnemy("dummy")
+    local presence = Kristal.getPresence()
+    presence.state = "Great Challenge but glitchy"
+    Kristal.setPresence(presence)
 end
 
 function Challenge:onReturnToWorld()
+    local presence = Kristal.getPresence()
+    presence.state = "Testing Stuff"
+    Kristal.setPresence(presence)
     --Game.world:startCutscene("Fifty", "Leave")
 end
 

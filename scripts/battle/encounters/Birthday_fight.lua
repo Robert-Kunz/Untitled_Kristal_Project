@@ -21,9 +21,15 @@ function Challenge:init()
 
     --- Uncomment this line to add another!
     --self:addEnemy("dummy")
+    local presence = Kristal.getPresence()
+    presence.state = "Birthday Bash"
+    Kristal.setPresence(presence)
 end
 
 function Challenge:onReturnToWorld()
+    local presence = Kristal.getPresence()
+    presence.state = "Testing Stuff"
+    Kristal.setPresence(presence)
 end
 
 return Challenge

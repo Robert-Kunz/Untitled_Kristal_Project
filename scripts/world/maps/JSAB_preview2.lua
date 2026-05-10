@@ -1,0 +1,370 @@
+return {
+  version = "1.10",
+  luaversion = "5.1",
+  tiledversion = "1.11.2",
+  class = "",
+  orientation = "orthogonal",
+  renderorder = "right-down",
+  width = 40,
+  height = 15,
+  tilewidth = 40,
+  tileheight = 40,
+  nextlayerid = 6,
+  nextobjectid = 142,
+  properties = {
+    ["name"] = "JSAB preview - Room 2"
+  },
+  tilesets = {
+    {
+      name = "castle",
+      firstgid = 1,
+      filename = "../tilesets/castle.tsx",
+      exportfilename = "../tilesets/castle.lua"
+    },
+    {
+      name = "JSAB",
+      firstgid = 41,
+      filename = "../tilesets/JSAB.tsx",
+      exportfilename = "../tilesets/JSAB.lua"
+    }
+  },
+  layers = {
+    {
+      type = "tilelayer",
+      x = 0,
+      y = 0,
+      width = 40,
+      height = 15,
+      id = 1,
+      name = "tiles",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      encoding = "lua",
+      data = {
+        42, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 0, 0, 0, 0, 0, 0, 0, 0, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 46,
+        50, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 51, 60, 60, 60, 60, 60, 60, 53, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 54,
+        50, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 59, 60, 60, 60, 60, 60, 60, 61, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 54,
+        50, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 67, 60, 60, 60, 60, 60, 60, 69, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 54,
+        50, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 51, 60, 60, 60, 60, 60, 60, 53, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 54,
+        57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 58, 58, 59, 60, 60, 60, 60, 60, 60, 61, 62, 62, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63,
+        57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 58, 58, 67, 60, 60, 60, 60, 60, 60, 69, 62, 62, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63,
+        57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 58, 58, 51, 60, 60, 60, 60, 60, 60, 53, 62, 62, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63,
+        57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 57, 58, 58, 59, 60, 60, 60, 60, 60, 60, 61, 62, 62, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63,
+        50, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 67, 60, 60, 60, 60, 60, 60, 69, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 54,
+        50, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 51, 60, 60, 60, 60, 60, 60, 53, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 54,
+        50, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 59, 60, 60, 60, 60, 60, 60, 61, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 54,
+        50, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 67, 60, 60, 60, 60, 60, 60, 69, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 54,
+        50, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 58, 51, 60, 60, 60, 60, 60, 60, 53, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 62, 54,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+      }
+    },
+    {
+      type = "tilelayer",
+      x = 0,
+      y = 0,
+      width = 40,
+      height = 15,
+      id = 2,
+      name = "decal",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      encoding = "lua",
+      data = {
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 3,
+      name = "collision",
+      class = "",
+      visible = true,
+      opacity = 0.5,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 93,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 40,
+          width = 40,
+          height = 157,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 94,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 363,
+          width = 40,
+          height = 197,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 96,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 560,
+          width = 1600,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 97,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 0,
+          width = 1600,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 102,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 1560,
+          y = 40,
+          width = 40,
+          height = 159,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 104,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 1560,
+          y = 361,
+          width = 40,
+          height = 199,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 4,
+      name = "objects",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 92,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 200,
+          width = 40,
+          height = 161,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "JSAB_preview1",
+            ["marker"] = "right"
+          }
+        },
+        {
+          id = 99,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 1560,
+          y = 199,
+          width = 40,
+          height = 160,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "JSAB_preview3",
+            ["marker"] = "left"
+          }
+        },
+        {
+          id = 111,
+          name = "script",
+          type = "",
+          shape = "rectangle",
+          x = 680,
+          y = 40,
+          width = 40,
+          height = 520,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "JSAB.Barracuda"
+          }
+        },
+        {
+          id = 137,
+          name = "savepoint",
+          type = "",
+          shape = "point",
+          x = 200,
+          y = 200,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["text1"] = "* You feel like you're about to face a difficult fight...",
+            ["text2"] = "* Your soul shines with [color:red]DETERMINATION[color:reset]"
+          }
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 5,
+      name = "markers",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 105,
+          name = "left",
+          type = "",
+          shape = "point",
+          x = 80,
+          y = 280,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 106,
+          name = "right",
+          type = "",
+          shape = "point",
+          x = 1520,
+          y = 280,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 108,
+          name = "spawn",
+          type = "",
+          shape = "point",
+          x = 200,
+          y = 280,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 112,
+          name = "place",
+          type = "",
+          shape = "point",
+          x = 680,
+          y = 160,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 130,
+          name = "placeH",
+          type = "",
+          shape = "point",
+          x = 680,
+          y = 400,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 133,
+          name = "camera_spot",
+          type = "",
+          shape = "point",
+          x = 840,
+          y = 280,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    }
+  }
+}

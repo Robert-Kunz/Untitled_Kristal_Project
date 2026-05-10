@@ -32,6 +32,28 @@ function snake:onStart(dir, segments, target)
             end
         end
     end, 4)
+    if Game:getFlag("DashSoul", false) then
+        self.timer:after(4, function() Assets.playSound("alert", 1, 1) end)
+        self.timer:after(5, function()
+            local arena = Game.battle.arena
+            for _, v in ipairs(self:getAttackers()) do
+                if v.id == "Barracuda" then
+                    local x, y = v:getRelativePos(v.width - 50, arena.height)
+                    local bullet = self:spawnBullet("bar", x, y, math.rad(180), 3)
+                    self.timer:every(1 / 15, function()
+                        -- Cancel timer if the bullet is removed
+                        if bullet:isRemoved() then
+                            return false
+                        end
+
+                        -- Spawn a new afterimage with 0.4 starting alpha
+                        local after_image = AfterImage(bullet.sprite, 0.4)
+                        bullet:addChild(after_image)
+                    end)
+                end
+            end
+        end)
+    end
 end
 
 function snake:update()

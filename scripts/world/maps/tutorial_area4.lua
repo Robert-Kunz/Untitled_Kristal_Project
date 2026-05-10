@@ -1,0 +1,281 @@
+return {
+  version = "1.10",
+  luaversion = "5.1",
+  tiledversion = "1.11.2",
+  class = "",
+  orientation = "orthogonal",
+  renderorder = "right-down",
+  width = 20,
+  height = 24,
+  tilewidth = 40,
+  tileheight = 40,
+  nextlayerid = 6,
+  nextobjectid = 98,
+  properties = {
+    ["name"] = "Test Map - Room 1"
+  },
+  tilesets = {
+    {
+      name = "castle",
+      firstgid = 1,
+      filename = "../tilesets/castle.tsx",
+      exportfilename = "../tilesets/castle.lua"
+    },
+    {
+      name = "Tutorial_Area",
+      firstgid = 41,
+      filename = "../tilesets/Tutorial_Area.tsx",
+      exportfilename = "../tilesets/Tutorial_Area.lua"
+    }
+  },
+  layers = {
+    {
+      type = "tilelayer",
+      x = 0,
+      y = 0,
+      width = 20,
+      height = 24,
+      id = 1,
+      name = "tiles",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      encoding = "lua",
+      data = {
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 75, 56, 56, 56, 56, 56, 77, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 75, 56, 56, 56, 56, 56, 77, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 75, 56, 56, 56, 56, 56, 77, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 75, 56, 56, 56, 56, 56, 77, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 75, 56, 56, 56, 56, 56, 77, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 75, 56, 56, 56, 56, 56, 77, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 75, 56, 56, 56, 56, 56, 77, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 75, 56, 56, 56, 56, 56, 77, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 75, 56, 56, 56, 56, 56, 77, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 75, 56, 56, 56, 56, 56, 77, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 75, 56, 56, 56, 56, 56, 77, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 75, 56, 56, 56, 56, 56, 77, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 75, 56, 56, 56, 56, 56, 77, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 75, 56, 56, 56, 56, 56, 77, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 75, 56, 56, 56, 56, 56, 77, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 75, 56, 56, 56, 56, 56, 77, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 75, 56, 56, 56, 56, 56, 77, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 75, 56, 56, 56, 56, 56, 77, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 75, 56, 56, 56, 56, 56, 77, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 75, 56, 56, 56, 56, 56, 77, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+      }
+    },
+    {
+      type = "tilelayer",
+      x = 0,
+      y = 0,
+      width = 20,
+      height = 24,
+      id = 2,
+      name = "decal",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      encoding = "lua",
+      data = {
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 3,
+      name = "collision",
+      class = "",
+      visible = true,
+      opacity = 0.5,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 91,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 280,
+          y = 40,
+          width = 40,
+          height = 800,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 92,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 520,
+          y = 40,
+          width = 40,
+          height = 800,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 4,
+      name = "objects",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 66,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 980.32,
+          y = 226.545,
+          width = 0,
+          height = 1.373,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 93,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 320,
+          y = 0,
+          width = 200,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "tutorial_area3",
+            ["marker"] = "down"
+          }
+        },
+        {
+          id = 94,
+          name = "transition",
+          type = "",
+          shape = "rectangle",
+          x = 320,
+          y = 840,
+          width = 200,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["map"] = "tutorial_area5",
+            ["marker"] = "up"
+          }
+        },
+        {
+          id = 97,
+          name = "script",
+          type = "",
+          shape = "rectangle",
+          x = 320,
+          y = 160,
+          width = 200,
+          height = 40,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["cutscene"] = "tutorial.bigger"
+          }
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 5,
+      name = "markers",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 95,
+          name = "up",
+          type = "",
+          shape = "point",
+          x = 418.837,
+          y = 99.723,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 96,
+          name = "down",
+          type = "",
+          shape = "point",
+          x = 423.269,
+          y = 817.729,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    }
+  }
+}

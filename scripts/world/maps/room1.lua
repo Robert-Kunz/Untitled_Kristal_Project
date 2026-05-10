@@ -24,8 +24,7 @@ return {
     {
       name = "Tutorial_Area",
       firstgid = 41,
-      filename = "../tilesets/Tutorial_Area.tsx",
-      exportfilename = "../tilesets/Tutorial_Area.lua"
+      filename = "../tilesets/Tutorial_Area.tsx"
     }
   },
   layers = {
@@ -395,8 +394,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["actor"] = "missingno",
-            ["cutscene"] = "Overworld.Profanity_toggle"
+            ["actor"] = "missingno"
           }
         },
         {

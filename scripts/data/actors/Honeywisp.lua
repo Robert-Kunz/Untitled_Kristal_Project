@@ -10,7 +10,7 @@ function actor:init()
     self.height = 60
 
     -- Hitbox for this actor in the overworld (optional, uses width and height by default)
-    self.hitbox = { 0, 25, 19, 14 }
+    self.hitbox = { 5, 40, 19, 14 }
 
     -- A table that defines where the Soul should be placed on this actor if they are a player.
     -- First value is x, second value is y.
@@ -25,7 +25,7 @@ function actor:init()
     self.default = "walk"
 
     -- Sound to play when this actor speaks (optional)
-    self.voice = nil
+    self.voice = "HW"
     -- Path to this actor's portrait for dialogue (optional)
     self.portrait_path = "face/HW"
     -- Offset position for this actor's portrait (optional)
@@ -59,9 +59,10 @@ function actor:init()
         ["battle/defeat"]       = { "battle/defeat", 1 / 15, false },
         ["battle/swooned"]      = { "battle/defeat", 1 / 15, false },
         ["battle/vanish"]       = { "battle/vanish", 1 / 15, false },
+        ["battle/reappear"]     = { "battle/reappear", 1 / 12, false },
 
-        ["battle/transition"]   = { "sword_jump_down", 0.2, true },
-        ["battle/intro"]        = { "battle/intro", 1 / 30, false },
+        ["battle/transition"]   = { "battle/transition_intro", 0.1, true },
+        ["battle/intro"]        = { "battle/victory", 0.05, false },
         ["battle/victory"]      = { "battle/victory", 1 / 10, false },
     }
 
@@ -85,6 +86,7 @@ function actor:init()
         ["battle/spell"] = { -6, -6 },
         ["battle/spellready"] = { -6, -6 },
         ["battle/defend"] = { -5, -1 },
+        ["battle/reappear"] = { -6, -6 },
 
         ["battle/defeat"] = { -8, -5 },
         ["battle/hurt"] = { -5, -1 },

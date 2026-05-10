@@ -14,12 +14,12 @@
     // one by one using the config below.
     "chapter": 4,
     // The map that you start in when first starting the mod.
-    "map": "room1",
+    "map": "tutorial_area1",
     // The party. The first character is the player.
     "party": [
-        "SD",
-        "Honeywisp",
-        "susie"
+        "SD"
+        //"Honeywisp",
+        //"susie"
     ],
     // The inventory. Contains three darkburgers, a cell phone and a shadow crystal by default.
     "inventory": {
@@ -57,7 +57,7 @@
             ]
         }
     },
-    // Decides what names crash the mod, in this case, none(directly)
+    // Decides what names crash the mod , in this case, none(directly)
     "namesCrash": [],
     //specific messages when typing in a certain name
     "namesMessages": {
@@ -69,7 +69,8 @@
         "50": "Just Numbers? Boring",
         "50SET80": "Lmao, thought i\n forgot this?",
         "GASTER": "I'm Wing Gaster!\nThe royal scientist!\n.",
-        "WDGASTER": "I'm Wing Ding Gaster!\nThe royal scientist!\n*dies through core*"
+        "WDGASTER": "I'm Wing Ding Gaster!\nThe royal scientist!\n*dies through core*",
+        "ROBERT": "Fucker, that's my name!"
     },
     // Adds Numbers to the keyboard, thanks elioz3 on Discord for this
     "keyboardMode": {

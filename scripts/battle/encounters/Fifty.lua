@@ -12,17 +12,33 @@ function Fifty:init()
     self.background = true
 
     -- Add the dummy enemy to the encounter
-    self:addEnemy("Fifty")
-
+    if Game:getFlag("Birthday", false) then
+        self:addEnemy("Test")
+        self:addEnemy("Fifty")
+        self:addEnemy("Test")
+    else
+        self:addEnemy("Fifty")
+    end
     -- removes the end message
     self.no_end_message = false
 
     --- Uncomment this line to add another!
     --self:addEnemy("dummy")
+    if Game:getFlag("Birthday", false) then
+        local presence = Kristal.getPresence()
+        presence.state = "Birthday Bash, baby!"
+        Kristal.setPresence(presence)
+    else
+        local presence = Kristal.getPresence()
+        presence.state = "Filthy Parody"
+        Kristal.setPresence(presence)
+    end
 end
 
 function Fifty:onReturnToWorld()
-    Game.world:startCutscene("Fifty", "Leave")
+    local presence = Kristal.getPresence()
+    presence.state = "Testing Stuff"
+    Kristal.setPresence(presence)
 end
 
 return Fifty

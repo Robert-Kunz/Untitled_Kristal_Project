@@ -115,7 +115,6 @@ of this mod.</property>
   <object id="98" name="npc" x="400" y="360" width="40" height="40">
    <properties>
     <property name="actor" value="missingno"/>
-    <property name="cutscene" value="Overworld.Profanity_toggle"/>
    </properties>
   </object>
   <object id="104" name="transition" x="245.333" y="786.667" width="404" height="53.3333">

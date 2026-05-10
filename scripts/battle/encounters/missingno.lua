@@ -20,6 +20,9 @@ function MISSINGNO:init()
     self.no_end_message = false
     --- Uncomment this line to add another!
     --self:addEnemy("dummy")
+    local presence = Kristal.getPresence()
+    presence.state = "Error 404, State not found"
+    Kristal.setPresence(presence)
 end
 
 function MISSINGNO:onBattleStart()
@@ -34,6 +37,9 @@ function MISSINGNO:onBattleStart()
 end
 
 function MISSINGNO:onReturnToWorld()
+    local presence = Kristal.getPresence()
+    presence.state = "Testing Stuff"
+    Kristal.setPresence(presence)
 end
 
 return MISSINGNO

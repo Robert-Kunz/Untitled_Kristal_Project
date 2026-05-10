@@ -50,7 +50,10 @@ function Test:init()
     -- Register act called "Smile"
     self:registerAct("Consume")
     self:registerAct("Take Care")
-    self:registerAct("Take Care X", "", { "Honeywisp" })
+    if Game:getFlag("Solo_run", false) then
+    else
+        self:registerAct("Take Care X", "", { "Honeywisp" })
+    end
     -- Register party act with Ralsei called "Tell Story"
     -- (second argument is description, usually empty)
 end

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="105">
+ <editorsettings>
+  <export target="JSAB_preview3.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="name" value="Test Map - Room 1"/>
+ </properties>
+ <tileset firstgid="1" source="../tilesets/castle.tsx"/>
+ <tileset firstgid="41" source="../tilesets/JSAB.tsx"/>
+ <layer id="1" name="tiles" width="16" height="12">
+  <data encoding="csv">
+47,45,45,45,45,45,45,45,45,45,45,45,45,45,45,46,
+70,62,62,62,62,62,62,62,62,62,62,62,62,62,62,54,
+70,62,62,62,62,62,62,62,62,62,62,62,62,62,62,54,
+70,62,62,62,62,62,62,62,62,62,62,62,62,62,62,54,
+63,63,63,63,63,63,63,63,63,63,63,63,63,62,62,54,
+63,63,63,63,63,63,63,63,63,63,63,63,63,62,62,54,
+63,63,63,63,63,63,63,63,63,63,63,63,63,62,62,54,
+63,63,63,63,63,63,63,63,63,63,63,63,63,62,62,54,
+70,62,62,62,62,62,62,62,62,62,62,62,62,62,62,54,
+70,62,62,62,62,62,62,62,62,62,62,62,62,62,62,54,
+70,62,62,62,62,62,62,62,62,62,62,62,62,62,62,54,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="2" name="decal" width="16" height="12">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup color="#0000ff" id="3" name="collision" opacity="0.5">
+  <object id="96" x="0" y="40" width="40" height="120"/>
+  <object id="97" x="0" y="320" width="40" height="120"/>
+  <object id="98" x="0" y="440" width="640" height="40"/>
+  <object id="99" x="600" y="40" width="40" height="400"/>
+  <object id="100" x="0" y="0" width="640" height="40"/>
+  <object id="101" x="518" y="175" width="44" height="86"/>
+ </objectgroup>
+ <objectgroup color="#ff00ff" id="4" name="objects">
+  <object id="95" name="portal3" x="519" y="179">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="103" name="transition" x="0" y="160" width="40" height="160">
+   <properties>
+    <property name="map" value="JSAB_preview2"/>
+    <property name="marker" value="right"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#7f00ff" id="5" name="markers">
+  <object id="104" name="left" x="80" y="240">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

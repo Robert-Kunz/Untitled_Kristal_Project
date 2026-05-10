@@ -11,7 +11,7 @@ function Barracuda:init()
     -- Enemy health
     self.max_health = 7000
     -- 1050 is 15% of max hp
-    self.health = 1051
+    self.health = 7000
     -- Enemy attack (determines bullet damage)
     self.attack = 10
     -- Enemy defense (usually 0)
@@ -30,7 +30,9 @@ function Barracuda:init()
         --"Testing_Bullet",
         "Barracuda/bombs",
         "Barracuda/grow",
-        "Barracuda/snake"
+        "Barracuda/snake",
+        "Barracuda/bombs_n_snakes",
+        "Barracuda/grow_n_snakes"
     }
 
     -- Dialogue randomly displayed in the enemy's speech bubble
@@ -50,7 +52,8 @@ function Barracuda:init()
         "* Corruption keeps spreading across the Arena",
         "* Holy shit is that Barracuda JSAB",
         "* That isn't a fish...",
-        "* Barracuda's harmonizing with the beat"
+        "* Barracuda's harmonizing with the beat",
+        "[face:SOUL/annoyed, -5, -8][voice:floweytalk2]* It's always this guy..."
     }
     self.Rage = false
     self.Cautious = false
@@ -65,9 +68,16 @@ function Barracuda:init()
     Game:setFlag("Convinced", false)
     Game:setFlag("low", false)
     self.Deletion_Barracuda = false
+    self.DodgeSoul_first_turn = false
 end
 
 function Barracuda:onTurnStart()
+    if self.DodgeSoul_first_turn == true then
+        Game.battle.battle_ui.encounter_text:setText(
+            "* [color:red]You[color:reset] have learned from the mythical heroes...\n* [color:red]You[color:reset] can now dodge just like [color:#00FFFF]t[color:yellow]h[color:green]e[color:#fca600]m[color:reset]!")
+        self.DodgeSoul_first_turn = false
+    end
+
     -- If the act happened last turn, reverts effects
     if self.HW_action == true then
         self.HW_action = false
@@ -117,13 +127,13 @@ function Barracuda:onTurnStart()
     end
 end
 
-function Barracuda:onTurnEnd()
-    if self.health < self.max_health * 0.15 + 1 then
-        self.wave_override = "Barracuda/bombs"
-        --self.transformed = true
-        --self:heal(math.huge)
-    end
-end
+-- function Barracuda:onTurnEnd()
+--     if self.health < self.max_health * 0.15 + 1 then
+--         self.wave_override = "Barracuda/bombs"
+--self.transformed = true
+--self:heal(math.huge)
+--    end
+--end
 
 function Barracuda:getDamageSound()
     return "JSAB_hit"
@@ -143,6 +153,15 @@ function Barracuda:getTarget()
     else
         return super.getTarget(self)
     end
+end
+
+function Barracuda:hurt(amount, battler, on_defeat, color, show_status, attacked)
+    if not (amount == 0 or (amount < 0 and Game:getConfig("damageUnderflowFix"))) and not (battler == nil) then -- If damage isn't 0 or below if the config is true does stuff
+        if battler.chara:getWeapon("jvab") then                                                                 -- Check if the battler has said weapon and do stuff if so
+            amount = amount * 2
+        end
+    end
+    super.hurt(self, amount, battler, on_defeat, color, show_status, attacked) -- Proceed to do the normal stuff
 end
 
 function Barracuda:onAct(battler, name)
@@ -175,6 +194,7 @@ function Barracuda:onAct(battler, name)
         self:statusMessage("damage", 3, { 1, 0.5, 0.5 })
         self:registerAct("Think")
         self:removeAct("Talk")
+        self.wave_override = "Barracuda/dodgesoul_scripted"
         -- checks, if Shopkeeper Cube was talked to
         if Game:getFlag("Talked_with_cube", false) then
             return { "* You mention how Cube told you about Blixer.\n[wait:10]* That he wouldn't want this anymore.",
@@ -196,13 +216,14 @@ function Barracuda:onAct(battler, name)
         self:registerAct("Convince")
         self:removeAct("Think")
         return { "* You think about what to do,\n* to convince Barracuda of mercy...",
-            "* * Maybe you have an idea now?",
+            "* Maybe you have an idea now?",
             "* Barracuda notices this, his defense increases!\n* Though he holds back to do so." }
     elseif name == "Convince" then
         -- alters stats and (TBD) starts final attack
         self.attack = self.attack + 3
         self:statusMessage("damage", 3, { 1, 0.5, 0.5 })
-        self.dialogue_override = ""
+        self.dialogue_override = "YOU WILL DIE"
+        self.wave_override = "Barracuda/Final_Attack"
         Game.battle:startActCutscene("Barracuda", "Convince")
         self:heal(math.huge)
         return

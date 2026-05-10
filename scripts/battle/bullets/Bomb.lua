@@ -22,6 +22,7 @@ function Bomb:init(x, y, dir, speed)
             self.wave:spawnBullet("CorruptedBullet", x + 3, self.y, math.rad(225), 10)
             self.wave:spawnBullet("CorruptedBullet", x, self.y, math.rad(270), 10)
             self.wave:spawnBullet("CorruptedBullet", x - 3, self.y, math.rad(315), 10)
+            Assets.playSound("bomb")
             self:remove()
         end
     end)

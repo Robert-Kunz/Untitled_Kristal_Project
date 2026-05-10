@@ -1,0 +1,110 @@
+local grow, super = Class(Wave)
+
+function grow:init()
+    super.init(self)
+    self.time = 15
+    self.arena_width = 300
+    self.arena_height = 200
+end
+
+function grow:onStart(dir, segments, target)
+    for _, v in ipairs(self:getAttackers()) do
+        if v.id == "Barracuda" then
+            -- spawning grow bullets every half second 10 times
+            self.timer:every(1 / 2, function()
+                local x, y = v:getRelativePos(v.width / 2, v.height / 2)
+                local bullet = self:spawnBullet("Ball", x, y)
+                -- Make this bullet double the size of a regular bullet (Default scaling is 2x)
+                bullet.physics.speed = 6
+                bullet.rotation = MathUtils.angle(x, y, Game.battle.soul.x, Game.battle.soul.y)
+                bullet.physics.match_rotation = true
+            end, 10)
+        end
+    end
+    -- After 5 seconds, releases 4 snakes over 4 seconds
+    self.timer:after(5, function()
+        self.timer:everyInstant(1, function()
+            for _, v in ipairs(self:getAttackers()) do
+                if v.id == "Barracuda" or v.id == "MISSINGNO" then
+                    local x, y = v:getRelativePos(v.width / 2, v.height / 2)
+                    -- Every 0.33 seconds...
+                    segments = 6
+                    dir = dir or 180
+                    target = { x = math.random(-10, 650), y = math.random(-10, 490) }
+                    self.worm = {}
+                    local head = self:spawnBullet("snake", x, y, dir, 1, "tip", target, nil)
+                    local lastsegment = head
+                    table.insert(self.worm, 1, head)
+                    local lastindex = 1
+                    for i = 1, segments do
+                        local segment = self:spawnBullet("snake", x, y, dir, 1, "segment", target, lastsegment)
+                        lastsegment = segment
+                        table.insert(self.worm, i + 1, segment)
+                        lastindex = i + 1
+                    end
+
+                    self.timer:after(1, function() head.should_turn = true end)
+                end
+            end
+        end, 4)
+    end)
+    -- two seconds after the last snake is released, resumes the grow attack until waves end
+    self.timer:after(10, function()
+        for _, v in ipairs(self:getAttackers()) do
+            if v.id == "Barracuda" then
+                -- spawning grow bullets every half second 10 times
+                self.timer:every(1 / 2, function()
+                    local x, y = v:getRelativePos(v.width / 2, v.height / 2)
+                    local bullet = self:spawnBullet("Ball", x, y)
+                    -- Make this bullet double the size of a regular bullet (Default scaling is 2x)
+                    bullet.physics.speed = 6
+                    bullet.rotation = MathUtils.angle(x, y, Game.battle.soul.x, Game.battle.soul.y)
+                    bullet.physics.match_rotation = true
+                end, 10)
+            end
+        end
+    end)
+
+    if Game:getFlag("DashSoul", false) then
+        self.timer:after(4, function() Assets.playSound("alert", 1, 1) end)
+        self.timer:after(5, function()
+            local arena = Game.battle.arena
+            for _, v in ipairs(self:getAttackers()) do
+                if v.id == "Barracuda" then
+                    local x, y = v:getRelativePos(v.width - 50, arena.height / 2)
+                    local bullet = self:spawnBullet("bar", x, y, math.rad(180), 3)
+                    self.timer:every(1 / 15, function()
+                        -- Cancel timer if the bullet is removed
+                        if bullet:isRemoved() then
+                            return false
+                        end
+
+                        -- Spawn a new afterimage with 0.4 starting alpha
+                        local after_image = AfterImage(bullet.sprite, 0.4)
+                        bullet:addChild(after_image)
+                    end)
+                    local x, y = v:getRelativePos(v.width - 50, arena.height / 4)
+                    local bullet = self:spawnBullet("bar", x, y, math.rad(180), 3)
+                    self.timer:every(1 / 15, function()
+                        -- Cancel timer if the bullet is removed
+                        if bullet:isRemoved() then
+                            return false
+                        end
+
+                        -- Spawn a new afterimage with 0.4 starting alpha
+                        local after_image = AfterImage(bullet.sprite, 0.4)
+                        bullet:addChild(after_image)
+                    end)
+                end
+            end
+        end)
+    end
+end
+
+function grow:update()
+    -- Code here gets called every frame
+
+    super.update(self)
+end
+
+return grow

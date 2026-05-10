@@ -21,10 +21,25 @@ function Challenge:init()
 
     --- Uncomment this line to add another!
     --self:addEnemy("dummy")
+    local presence = Kristal.getPresence()
+    presence.state = "LET THE CHALLENGE BEGIN!"
+    Kristal.setPresence(presence)
 end
 
 function Challenge:onReturnToWorld()
+    local presence = Kristal.getPresence()
+    presence.state = "Testing Stuff"
+    Kristal.setPresence(presence)
     Game.world:startCutscene("Fifty", "Leave")
+end
+
+function Challenge:getNextWaves()
+    for _, attack in pairs(super.getNextWaves(self)) do
+        if attack == "Barracuda/Final_Attack" then
+            return { "Barracuda/Final_Attack" }
+        end
+    end
+    return super.getNextWaves(self)
 end
 
 return Challenge

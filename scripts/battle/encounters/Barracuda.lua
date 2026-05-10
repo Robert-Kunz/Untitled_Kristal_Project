@@ -9,7 +9,7 @@ function Barracuda:init()
     -- Battle music ("battle" is rude buster)
     self.music = "battle/Barracuda"
     -- Enables the purple grid battle background
-    self.background = true
+    self.background = false
 
     -- Add the dummy enemy to the encounter
     self:addEnemy("Barracuda", 5 / 6 * 640, 240)
@@ -17,6 +17,15 @@ function Barracuda:init()
     --- Uncomment this line to add another!
     --self:addEnemy("dummy")
     self.no_end_message = true
+    local presence = Kristal.getPresence()
+    presence.state = "Snakes, Why did it have to be snakes?"
+    Kristal.setPresence(presence)
+end
+
+function Barracuda:onReturnToWorld()
+    local presence = Kristal.getPresence()
+    presence.state = "Testing Stuff"
+    Kristal.setPresence(presence)
 end
 
 return Barracuda

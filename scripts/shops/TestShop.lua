@@ -2,6 +2,12 @@ local TestShop, super = Class(Shop)
 
 function TestShop:init()
     super.init(self)
+    self.menu_options                 = {
+        { "Stuff",      "BUYMENU" },
+        { "Your Stuff", "SELLMENU" },
+        { "Lore lol",   "TALKMENU" },
+        { "begone",     "LEAVE" }
+    }
     self.encounter_text               = "* H-hello! Welcome to my shop.\n[wait:5]* How can I help you?"
     self.shop_text                    = "* Did you need anything else?"
     self.leaving_text                 = "* Thanks for visiting!"

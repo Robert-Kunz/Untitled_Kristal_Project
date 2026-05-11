@@ -24,7 +24,7 @@ function spell:init()
 end
 
 function spell:getCastMessage(user, target)
-    return ("* " + user.chara:getName() + " tossed her Egg!\n* Though she left to get another one...")
+    return ("* " .. user.chara:getName() .. " tossed her Egg!\n* Though she left to get another one...")
 end
 
 function spell:onCast(user, target)

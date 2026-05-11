@@ -32,13 +32,13 @@ function spell:getCastMessage(user, target)
         Game.inventory:removeItem("Bottle")
         if Game.inventory:hasItem("Bottle") then
             Game.inventory:tryGiveItem("Bottle")
-            return ("* " + user.chara:getName() + " brewed up a Healing P.\n* And a Strength Potion!")
+            return ("* " .. user.chara:getName() .. " brewed up a Healing P.\n* And a Strength Potion!")
         else
             Game.inventory:tryGiveItem("Bottle")
-            return ("* " + user.chara:getName() + " brewed up a Healing P.,\n[wait:8]* But had no empty Bottle for the Strength Potion!")
+            return ("* " .. user.chara:getName() .. " brewed up a Healing P.,\n[wait:8]* But had no empty Bottle for the Strength Potion!")
         end
     else
-        return ("* " + user.chara:getName() + " tried to brew up two Potions...\n[wait:8]* But had no empty Bottles for them!")
+        return ("* " .. user.chara:getName() .. " tried to brew up two Potions...\n[wait:8]* But had no empty Bottles for them!")
     end
 end
 

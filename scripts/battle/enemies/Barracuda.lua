@@ -43,7 +43,7 @@ function Barracuda:init()
     }
 
     -- Check text (automatically has "ENEMY NAME - " at the start)
-    self.check = "AT " + self.attack + " DF " + self.defense +
+    self.check = "AT " .. self.attack .. " DF " .. self.defense ..
         "\n* The Easiest of the 4 Bosses\n* Fights a lot with Snakes."
 
     -- Text randomly displayed at the bottom of the screen each turn
@@ -167,7 +167,7 @@ end
 function Barracuda:onAct(battler, name)
     -- dynamic check
     if name == "Check" then
-        return ("* BARRACUDA - AT " + self.attack + " DF " + self.defense +
+        return ("* BARRACUDA - AT " .. self.attack .. " DF " .. self.defense ..
             "\n* The Easiest of the 4 Bosses\n* Fights a lot with Snakes.")
     elseif name == "Harmonize" then
         -- replaces the current act with the next one

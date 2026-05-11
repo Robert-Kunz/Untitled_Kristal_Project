@@ -25,10 +25,10 @@ end
 
 function spell:getCastMessage(user, target)
     if user:hasStatus("mititeless") then
-        return { ("* " + user.chara:getName() + " tossed an Empty egg..."),
+        return { ("* " .. user.chara:getName() .. " tossed an Empty egg..."),
             "* She left to get another one.\n* [color:yellow](don't use Mitite Toss with the mititeless status!)[color:reset]" }
     else
-        return ("* " + user.chara:getName() + " tossed her Egg!\n* Though she left to get another one...")
+        return ("* " .. user.chara:getName() .. " tossed her Egg!\n* Though she left to get another one...")
     end
 end
 

@@ -48,6 +48,7 @@ function item:init()
         susie = "Hey! This has a melony Taste!",
         ralsei = "Healthy!",
         noelle = "This tastes interesting...",
+        SD = "Watermelone",
         Honeywisp = "winged..."
     }
 end

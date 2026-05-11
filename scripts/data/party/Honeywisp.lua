@@ -51,7 +51,7 @@ function character:init()
     }
 
     -- Weapon icon in equip menu
-    self.weapon_icon = "ui/menu/equip/sword"
+    self.weapon_icon = "ui/menu/equip/egg"
 
     -- Equipment (saved to the save file)
     self:setWeapon("Nectar_Egg")
@@ -156,15 +156,6 @@ function character:canEquip(item, slot_type, slot_index)
 end
 
 function character:getReaction(item, user)
-    if item or user.id ~= self.id then
-        if self:getArmor(2) == "PS" then
-            return { { 1, 0, 0 }, "YOU WILL NOT REMOVE ME" }
-        else
-            return super.getReaction(self, item, user)
-        end
-    elseif self:getArmor(2) == "PS" then
-        return { { 1, 0, 0 }, "YOU WILL NOT REMOVE ME" }
-    end
 end
 
 return character

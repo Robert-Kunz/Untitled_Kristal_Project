@@ -24,7 +24,7 @@ function spell:init()
 end
 
 function spell:getCastMessage(user, target)
-    return ("* " + user.chara:getName() + " vanished!")
+    return ("* " .. user.chara:getName() .. " vanished!")
 end
 
 function spell:onCast(user, target)

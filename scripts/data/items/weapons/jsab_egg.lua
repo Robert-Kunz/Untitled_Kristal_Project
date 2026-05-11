@@ -1,10 +1,10 @@
-local item, super = Class(Item, "Nectar_Egg")
+local item, super = Class(Item, "jsab_egg")
 
 function item:init()
     super.init(self)
 
     -- Display name
-    self.name = "Egg"
+    self.name = "JEAB"
 
     -- Item type (item, key, weapon, armor)
     self.type = "weapon"
@@ -16,8 +16,7 @@ function item:init()
     -- Shop description
     self.shop = ""
     -- Menu description
-    -- apperantly senescence is the process leaves go through while going from green to orange
-    self.description = "A Nectar egg straight from the Pikmin Universe.\nIt's not very sturdy..."
+    self.description = "A cyan glowing Egg shaped structure.\nProtects from the corrupted."
 
     -- Default shop price (sell price is halved)
     self.price = 0
@@ -33,10 +32,13 @@ function item:init()
     -- Will this item be instantly consumed in battles?
     self.instant = false
 
+    self.bonus_name = "DEFEND Corrupted"
+    self.bonus_icon = "ui/menu/icon/armor"
     -- Equip bonuses (for weapons and armor)
     self.bonuses = {
-        health = 0,
-        attack = 0
+        health = 20,
+        defense = 2,
+        magic = 1
     }
 
     -- Equippable characters (default true for armors, false for weapons)
@@ -46,8 +48,8 @@ function item:init()
 
     -- Character reactions
     self.reactions = {
-        SD = "Egg",
-        Honeywisp = "Reminds me of home..."
+        SD = "Egg, but glowing",
+        Honeywisp = "...Is this even an Egg?"
     }
 end
 

@@ -37,6 +37,7 @@ function Fifty:init()
             "I picked up some tricks from that Triangle!",
             "Mushrooms...",
             "HUND KLAVIER!",
+            ("I know you're there, " .. Game.save_name)
         }
 
         -- Check text (automatically has "ENEMY NAME - " at the start)
@@ -87,7 +88,8 @@ function Fifty:init()
             "Dodge, Delete!",
             "I picked up a trick from those sushi!",
             "Mushrooms...",
-            "HUND KLAVIER!"
+            "HUND KLAVIER!",
+            ("I know you're there, " .. Game.save_name)
         }
 
         -- Check text (automatically has "ENEMY NAME - " at the start)

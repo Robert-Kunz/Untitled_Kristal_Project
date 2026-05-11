@@ -1,5 +1,6 @@
 local Fifty, super = Class(EnemyBattler)
--- Only here for archiving the original code, differences were moved to the main Fifty enemy
+-- Only here for archiving the original code, differences were moved to the main Fifty enemy.
+-- Might get deleted in a future update
 function Fifty:init()
     super.init(self)
 

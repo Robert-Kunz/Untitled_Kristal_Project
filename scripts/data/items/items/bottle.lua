@@ -51,7 +51,7 @@ end
 
 function item:getBattleMessage(user, target)
     -- doesn't work currently
-    return ("* " + user.chara:getName() + " doesn't know what to do with the " + item.getUseName() + "...")
+    return ("* " .. user.chara:getName() .. " doesn't know what to do with the " .. item.getUseName() .. "...")
 end
 
 return item

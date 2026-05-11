@@ -180,16 +180,17 @@ function MISSINGNO:draw()
 end
 
 function MISSINGNO:onAct(battler, name)
+    -- As you can see, Missingno is still not finished, X-acts are still a placeholder from barracuda
     -- dynamic check
     if name == "Check" then
         if self.name == "MISSINGNO" then
-            return { ("* MISSINGNO NR. 000 - AT " + self.attack + " DF " + self.defense +
+            return { ("* MISSINGNO NR. 000 - AT " .. self.attack .. " DF " .. self.defense ..
                 "\nThe Reality Pokémon"), "TYPE     Bird, Normal\nHT       3'3\nWT       22.0 lbs.",
                 "* Not many have seen MISSINGNO and lived to tell the tale.",
                 "* It is said that MISSINGNO can alter reality itself, though this remains to be proven..." }
         else
-            return { (self.name + "...? - AT " + self.attack + " DF " + self.defense +
-                "\nThe Transformed"), ("[wait:7]* ...That isn't the real [color:yellow]" + self.name + "[color:reset]...\n* Is it?") }
+            return { (self.name .. "...? - AT " .. self.attack .. " DF " .. self.defense ..
+                "\nThe Transformed"), ("[wait:7]* ...That isn't the real [color:yellow]" .. self.name .. "[color:reset]...\n* Is it?") }
         end
     elseif name == "Protect" then
         Game.battle:startActCutscene("Missingno", "Protect")

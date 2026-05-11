@@ -2,14 +2,14 @@ local item, super = Class(Item, "PS")
 
 function item:init()
     super.init(self)
-
     -- Display name
+
     self.name = "PURE SOUL"
 
     -- Item type (item, key, weapon, armor)
     self.type = "armor"
     -- Item icon (for equipment)
-    self.icon = "ui/menu/icon/armor"
+    self.icon = "ui/menu/icon/soul"
 
     -- Battle description
     self.effect = ""

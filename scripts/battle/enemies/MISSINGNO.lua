@@ -40,7 +40,7 @@ function MISSINGNO:init()
     }
 
     -- Check text (automatically has "ENEMY NAME - " at the start)
-    self.check = "AT " + self.attack + " DF " + self.defense +
+    self.check = "AT " .. self.attack .. " DF " .. self.defense ..
         "\n* The Easiest of the 4 Bosses\n* Fights a lot with Snakes."
 
     -- Text randomly displayed at the bottom of the screen each turn

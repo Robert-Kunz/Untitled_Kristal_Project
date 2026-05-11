@@ -107,13 +107,13 @@ function character:init()
     self.chat_messages = {
         ["GENERIC/INTRO/1"] = "Let's waste em!",
         ["GENERIC/INTRO/2"] = "Mercy might be an option...",
-        ["GENERIC/INTRO/3"] = ("Don't fuck this up, " + Game.save_name),
+        ["GENERIC/INTRO/3"] = ("Don't fuck this up, " .. Game.save_name),
 
         ["GENERIC/IDLE/1"] = "...",
         ["GENERIC/IDLE/2"] = "Dude, do something",
         ["GENERIC/IDLE/3"] = "Okay why take a piss break now?",
 
-        ["GENERIC/HURT/1"] = (Game.save_name + "!"),
+        ["GENERIC/HURT/1"] = (Game.save_name .. "!"),
         ["GENERIC/HURT/2"] = "BITCH",
 
         ["GENERIC/TAUNT/1"] = "I've fought worse!",
@@ -127,7 +127,7 @@ function character:init()
 
         ["GENERIC/RAGE/1"] = "FUCK!",
         ["GENERIC/RAGE/2"] = "WE'RE LOSING, PEOPLE.",
-        ["GENERIC/RAGE/3"] = Game.save_name + ", pull yourself together..."
+        ["GENERIC/RAGE/3"] = Game.save_name .. ", pull yourself together..."
     }
 end
 

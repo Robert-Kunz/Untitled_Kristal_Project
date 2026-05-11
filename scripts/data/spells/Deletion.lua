@@ -31,7 +31,7 @@ function spell:getCastMessage(user, target)
     if Game.battle:getEnemyBattler("Fifty") or Game.battle:getEnemyBattler("Fifty_Birthday") then
         return nil
     end
-    return ("* " + user.chara:getName() + " cast Deletion!")
+    return ("* " .. user.chara:getName() .. " cast Deletion!")
 end
 
 function spell:onCast(user, target)

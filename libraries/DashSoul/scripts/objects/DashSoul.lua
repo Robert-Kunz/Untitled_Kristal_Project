@@ -152,7 +152,7 @@ function DashSoul:doMovement()
             self.timer = 0
             self.null_timer = 0
             self.act_timer = 0
-            self.inv_timer = 0.5
+            Game:setInvulnFrames(10)
         end
     end
 end

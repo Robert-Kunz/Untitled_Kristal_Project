@@ -9,8 +9,8 @@ function actor:init(style)
     self.name = "FiftyN"
 
     -- Width and height for this actor, used to determine its center
-    self.width = 25
-    self.height = 43
+    self.width = 30
+    self.height = 40
 
     -- Hitbox for this actor in the overworld (optional, uses width and height by default)
 
@@ -24,12 +24,12 @@ function actor:init(style)
     -- Path to this actor's sprites (defaults to "")
     self.path = "party/Fifty"
     -- This actor's default sprite or animation, relative to the path (defaults to "")
-    self.default = "idle"
+    self.default = "battle/idle"
     -- Sound to play when this actor speaks (optional)
     self.voice = "susie"
     -- Path to this actor's portrait for dialogue (optional)
     self.portrait_path = "face/Fifty"
-    self.portrait_offset = { 0, -5 }
+    self.portrait_offset = { -25, -5 }
     -- Offset position for this actor's portrait (optional)
 
     -- Whether this actor as a follower will blush when close to the player
@@ -39,14 +39,28 @@ function actor:init(style)
     self.animations = {
         -- Looping animation with 0.25 seconds between each frame
         -- (even though there's only 1 idle frame)
-        ["idle"] = { "idle", 0.25, true },
+        ["battle/idle"] = { "battle/idle", 0.15, true },
+        ["battle/defeat"] = { "battle/defeat", 0.25, true },
+        ["battle/dodge"] = { "battle/dodge", 0.25, false, temp = 0.5 },
+        ["battle/intro"] = { "battle/intro", 0.1, false },
+        ["battle/transition"] = { "battle/intro_transition", 0.25, false }
     }
 
     -- Table of sprite offsets (indexed by sprite name)
     self.offsets = {
         -- Since the width and height is the idle sprite size, the offset is 0,0
-        ["idle"] = { 0, 0 },
+        ["battle/idle"] = { 0, 0 },
+        ["battle/defeat"] = { 0, 0 },
+        ["battle/dodge"] = { -30, 0 },
+        ["battle/intro"] = { 0, 0 },
+        ["battle/intro_transition"] = { 0, 0 }
     }
+    self.flip = "left"
+    self.turn = true
+end
+
+function actor:onWorldUpdate()
+
 end
 
 return actor

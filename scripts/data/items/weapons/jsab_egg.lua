@@ -57,4 +57,8 @@ function item:getAttackSprite(battler, enemy, points)
     return "effects/attack/slap_SD"
 end
 
+function item:onBattleDamage(amount, swoon, all)
+
+end
+
 return item

@@ -7,6 +7,8 @@ function Fifty:init()
     self.name = "Fifty"
     -- Sets the actor, which handles the enemy's sprites (see scripts/data/actors/dummy.lua)
     self:setActor("FiftyN")
+    self.exit_on_defeat = false
+    self.dialogue_offset = { -50, 0 }
     if Game:getFlag("Birthday", false) == true then
         -- Enemy health
         self.max_health = 2500
@@ -140,24 +142,74 @@ function Fifty:onDodge(battler, attacked)
         Kristal.Console:log("yes this works")
         battler:hurt(25)
     end
+    if self.sprite then
+        self.sprite:setAnimation("battle/dodge")
+        Assets.playSound("wing")
+    end
+end
+
+function Fifty:onDefeat(damage, battler)
+    if self.exit_on_defeat then
+        self:onDefeatRun(damage, battler)
+    elseif self.sprite then
+        self.sprite:setAnimation("defeat")
+    end
+    self:setRecruitStatus(true)
+    Game.battle:removeEnemy(self, true)
+    --if Game.battle:getState() == "CUTSCENE" then
+    --else
+    --    Game.battle:startCutscene("Fifty", "Parody")
+    --    Game.battle.battle_ui:endAttack()
+    --end
 end
 
 function Fifty:onAct(battler, name)
     if name == "Check" then
         if Game:getFlag("Birthday", false) == true then
-            self.dialogue_override = {
-                "Really? Checking me?",
-                "You really did get rusty, sd.",
-                "Must be your Age."
-            }
+            if Game:getFlag("Solo_run", false) then
+                if Game:getFlag("SD_solo", false) then
+                    self.dialogue_override = {
+                        "Really? Checking me?",
+                        "You really did get rusty, sd.",
+                        "Must be your Age."
+                    }
+                elseif Game:getFlag("HW_solo", false) then
+                    self.dialogue_override = {
+                        "You know?",
+                        "This isn't your Birthday",
+                        "I didn't expect you."
+                    }
+                end
+            else
+                self.dialogue_override = {
+                    "Really? Checking me?",
+                    "You really did get rusty, sd.",
+                    "Must be your Age."
+                }
+            end
             return { ("* FIFTYSET80 - AT " + self.attack + " DF " + self.defense +
                 "\n* Stupid Birthday crasher..."),
                 "* Shows signs of being able to dodge\n* Maybe you can [color:yellow]distract[color:reset] him?", }
         else
-            self.dialogue_override = {
-                "Really? Checking me?",
-                "You really did get rusty, sd."
-            }
+            if Game:getFlag("Solo_run", false) then
+                if Game:getFlag("SD_solo", false) then
+                    self.dialogue_override = {
+                        "Really? Checking me?",
+                        "You really did get rusty, sd."
+                    }
+                elseif Game:getFlag("HW_solo", false) then
+                    self.dialogue_override = {
+                        "Really? Checking me?",
+                        "Expected from you...",
+                        "But still disrespectful."
+                    }
+                end
+            else
+                self.dialogue_override = {
+                    "Really? Checking me?",
+                    "You really did get rusty, sd."
+                }
+            end
             return { ("* FIFTYSET80 - AT " + self.attack + " DF " + self.defense +
                 "\n* Parody of SD\n* ...or is he?"),
                 "* Shows signs of being able to dodge\n* Maybe you can [color:yellow]distract[color:reset] him?" }

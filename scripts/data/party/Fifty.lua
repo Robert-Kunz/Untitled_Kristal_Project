@@ -21,7 +21,7 @@ function character:init()
     -- Determines which character the soul comes from (higher number = higher priority)
     self.soul_priority = 1
     -- The color of this character's soul (optional, defaults to red)
-    self.soul_color = {1, 0, 0}
+    self.soul_color = { 1, 0, 0 }
 
     -- Whether the party member can act / use spells
     self.has_act = false
@@ -97,9 +97,9 @@ function character:init()
             health = 290
         }
     end
-    
+
     -- Party members which will also get stronger when this character gets stronger, even if they're not in the party
-    self.stronger_absent = {"kris","susie","ralsei"}
+    self.stronger_absent = { "kris", "susie", "ralsei" }
 
     -- Weapon icon in equip menu
     self.weapon_icon = "ui/menu/equip/axe"
@@ -116,22 +116,21 @@ function character:init()
     self.lw_armor_default = "light/bandage"
 
     -- Character color (for action box outline and hp bar)
-    self.color = {1, 0, 1}
+    self.color = { 1, 0, 1 }
     -- Damage color (for the number when attacking enemies) (defaults to the main color)
-    self.dmg_color = {0.8, 0.6, 0.8}
+    self.dmg_color = { 0.8, 0.6, 0.8 }
     -- Attack bar color (for the target bar used in attack mode) (defaults to the main color)
-    self.attack_bar_color = {234/255, 121/255, 200/255}
+    self.attack_bar_color = { 234 / 255, 121 / 255, 200 / 255 }
     -- Attack box color (for the attack area in attack mode) (defaults to darkened main color)
-    self.attack_box_color = {0.5, 0, 0.5}
+    self.attack_box_color = { 0.5, 0, 0.5 }
     -- X-Action color (for the color of X-Action menu items) (defaults to the main color)
-    self.xact_color = {1, 0.5, 1}
+    self.xact_color = { 1, 0.5, 1 }
 
     -- Head icon in the equip / power menu
     self.menu_icon = "party/susie/head"
     -- Path to head icons used in battle
     self.head_icons = "party/susie/icon"
     -- Name sprite (optional)
-    self.name_sprite = "party/susie/name"
 
     -- Effect shown above enemy after attacking it
     self.attack_sprite = "effects/attack/mash"
@@ -141,7 +140,7 @@ function character:init()
     self.attack_pitch = 0.9
 
     -- Battle position offset (optional)
-    self.battle_offset = {3, 1}
+    self.battle_offset = { 3, 1 }
     -- Head icon position offset (optional)
     self.head_icon_offset = nil
     -- Menu icon position offset (optional)
@@ -158,7 +157,7 @@ end
 
 function character:onTurnStart(battler)
     if self:getFlag("auto_attack", false) then
-        Game.battle:pushForcedAction(battler, "AUTOATTACK", Game.battle:getActiveEnemies()[1], nil, {points = 150})
+        Game.battle:pushForcedAction(battler, "AUTOATTACK", Game.battle:getActiveEnemies()[1], nil, { points = 150 })
     end
 end
 
@@ -183,7 +182,7 @@ end
 function character:getGameOverMessage(main)
     return {
         "Come on,[wait:5]\nthat all you got!?",
-        main:getName()..",[wait:5]\nget up...!"
+        main:getName() .. ",[wait:5]\nget up...!"
     }
 end
 
@@ -214,12 +213,12 @@ end
 function character:drawPowerStat(index, x, y, menu)
     if index == 1 then
         local icon = Assets.getTexture("ui/menu/icon/demon")
-        Draw.draw(icon, x-26, y+6, 0, 2, 2)
+        Draw.draw(icon, x - 26, y + 6, 0, 2, 2)
         love.graphics.print("Rudeness", x, y)
         if Game.chapter == 1 then
-            love.graphics.print("99", x+130, y)
+            love.graphics.print("99", x + 130, y)
         else
-            love.graphics.print("89", x+130, y)
+            love.graphics.print("89", x + 130, y)
         end
         return true
     elseif index == 2 then
@@ -227,27 +226,27 @@ function character:drawPowerStat(index, x, y, menu)
             return
         end
         local icon = Assets.getTexture("ui/menu/icon/demon")
-        Draw.draw(icon, x-26, y+6, 0, 2, 2)
+        Draw.draw(icon, x - 26, y + 6, 0, 2, 2)
         if Game.chapter == 1 then
             love.graphics.print("Crudeness", x, y, 0, 0.8, 1)
-            love.graphics.print("100", x+130, y)
+            love.graphics.print("100", x + 130, y)
         elseif Game.chapter == 2 then
             love.graphics.print("Purple", x, y, 0, 0.8, 1)
-            love.graphics.print("Yes", x+130, y)
+            love.graphics.print("Yes", x + 130, y)
         end
         return true
     elseif index == 3 then
         local icon = Assets.getTexture("ui/menu/icon/fire")
-        Draw.draw(icon, x-26, y+6, 0, 2, 2)
+        Draw.draw(icon, x - 26, y + 6, 0, 2, 2)
         love.graphics.print("Guts:", x, y)
 
-        Draw.draw(icon, x+90, y+6, 0, 2, 2)
-        Draw.draw(icon, x+110, y+6, 0, 2, 2)
+        Draw.draw(icon, x + 90, y + 6, 0, 2, 2)
+        Draw.draw(icon, x + 110, y + 6, 0, 2, 2)
         if Game.chapter >= 3 then
-            Draw.draw(icon, x+130, y+6, 0, 2, 2)
+            Draw.draw(icon, x + 130, y + 6, 0, 2, 2)
         end
         if Game.chapter >= 4 then
-            Draw.draw(icon, x+150, y+6, 0, 2, 2)
+            Draw.draw(icon, x + 150, y + 6, 0, 2, 2)
         end
         return true
     end

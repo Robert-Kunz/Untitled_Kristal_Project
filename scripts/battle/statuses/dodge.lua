@@ -17,7 +17,7 @@ function dodeing:onHurt(battler)
     if math.random(1, 2) == 2 then
         Kristal.Console:log("haw haw")
         battler:statusMessage("damage", 0, { 1, 1, 1 })
-        battler:setAnimation("battle/itemready")
+        battler:setAnimation("battle/dodge")
         return 0
     end
 end

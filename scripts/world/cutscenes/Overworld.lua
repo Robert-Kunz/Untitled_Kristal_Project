@@ -49,8 +49,11 @@ return {
                 HW:convertToPlayer()
                 Game:getPartyMember("Honeywisp"):setArmor(2, "PS")
                 SD:remove()
+                Game:setFlag("HW_solo", true)
             elseif Game.save_name == "SD" then
+                Game:setFlag("SD_solo", true)
                 Game:setPartyMembers("SD")
+                Game:getPartyMember("SD"):setArmor(2, "PS")
             else
                 Game:setPartyMembers("Fifty")
             end
@@ -84,6 +87,20 @@ return {
             cutscene:wait(1)
             cutscene:fadeIn()
             cutscene:wait(1)
+            if Game:getFlag("HW_solo", false) then
+                cutscene:text("* ...", "idle", "Honeywisp")
+                cutscene:text("* Where the hell am I???", "confused", "Honeywisp")
+                cutscene:text("* And... what[wait:3] is[wait:3] this[wait:3] Armor?!", "confused", "Honeywisp")
+                cutscene:text("* ...", "thinking", "Honeywisp")
+                cutscene:text("* W-well... this certainly isn't my home...", "idle", "Honeywisp")
+            elseif Game:getFlag("SD_solo", false) then
+                cutscene:text("* ...", "idle", "SD")
+                cutscene:text("* What, THE HELL, did you do.", "Annoyed", "SD")
+                cutscene:text("* ...", "Annoyed", "SD")
+                cutscene:text("* No response?", "Annoyed", "SD")
+                cutscene:wait(1)
+                cutscene:text("* Alright, fine... Just know this shit will be harder.", "Hopeless", "SD")
+            end
         else
             cutscene:fadeOut()
             cutscene:wait(2)
@@ -131,7 +148,7 @@ return {
                 cutscene:text("* [speed:0.4]YOU REALLY ARE AS BAD AS THEY DESCRIBED...", nil, "gaster")
             end
             cutscene:text("* [speed:0.4]GOODBYE...", nil, "gaster")
-            cutscene:text("* NO WAIT I STILL HAVE QUESTIONS", "idle", "SD")
+            cutscene:text("* NO WAIT I STILL HAVE QUESTIONS", "idle", "SD", { auto = true })
             cutscene:text("* WAIT-!", "idle", "SD", { auto = true })
             cutscene:wait(1)
             cutscene:fadeIn()
@@ -149,8 +166,21 @@ return {
             Game.stage:addChild(soul)
             soul:addChild(FlashFade("player/heart_dodge", 0, 0))
             cutscene:wait(1)
-            cutscene:text("* Okay, look-", "annoyed", "soul")
+            cutscene:getCharacter("SD"):setFacing("right")
+            cutscene:text("* Okay, look-", "annoyed", "soul", { auto = true })
+            cutscene:text("* Just...", "Hopeless", "SD", { auto = true })
+            cutscene:wait(0.3)
             cutscene:text("* Just... shut it, " .. Game.save_name, "Hopeless", "SD")
+            cutscene:text("* Hear me out, okay?", "idle", "soul")
+            cutscene:text("* NO!", "Annoyed", "SD")
+            cutscene:text("* [REDACTED] just screwed me over and now you're here??", "Annoyed", "SD")
+            cutscene:text("* What the hell else could go wrong today?", "Annoyed", "SD")
+            cutscene:text("* Jeez, calm down, I wasn't gonna do anything [color:yellow]weird[color:reset] this time...",
+                "annoyed", "soul")
+            cutscene:text("* Go vanish again, I need a few seconds alone...", "Hopeless", "SD")
+            cutscene:text("* You're no fun...", "annoyed", "soul")
+            soul:fadeOutAndRemove(2)
+            Assets.playSound("mysterygo")
         end
     end,
 
@@ -313,29 +343,39 @@ return {
     end,
 
     Great_Challenge_HW_intro = function(cutscene, battler, enemy)
-        local SD = cutscene:getCharacter("SD")
-        local x, y = cutscene:getMarker("HW_spawn")
-        Game:addPartyMember("Honeywisp")
-        Game.world:spawnFollower("Honeywisp", { 2, "Honeywisp", false, 1, 1 })
-        local HW = cutscene:getCharacter("Honeywisp")
-        cutscene:detachFollowers()
-        HW.x = x
-        HW.y = y
-        cutscene:wait(cutscene:setAnimation(HW, { "battle/reappear", 1 / 12, false }))
-        cutscene:setAnimation(HW, { "walk", 1 / 12, false })
-        HW:setFacing("right")
-        SD:setFacing("left")
-        cutscene:text("* ...", "idle", "Honeywisp")
-        cutscene:text("* Okay guess we ain't explaining this this time...", "idle", "SD")
-        Assets.playSound("moss_fanfare")
-        cutscene:text("* Honeywisp joins your party!")
-        if Game:getFlag("Friend_name", false) then
-            cutscene:wait(1)
-            SD:setFacing("down")
-            cutscene:text("* Oh, and " .. Game.save_name .. "?", "idle", "SD")
-            cutscene:text("* Don't even attempt to try something...", "idle", "SD")
+        if Game:getFlag("Solo_run", false) then
+            if Game:getFlag("SD_solo", false) then
+                cutscene:text("* Right,[wait:3] Solo run,[wait:3] no Honeywisp to aid me...", "idle", "SD")
+            elseif Game:getFlag("HW_solo", false) then
+                cutscene:text("* This place again...", "idle", "Honeywisp")
+                cutscene:text("* ...", "look_down", "Honeywisp")
+                cutscene:text("* I-I guess I'll go on...", "idle", "Honeywisp")
+            end
+        else
+            local SD = cutscene:getCharacter("SD")
+            local x, y = cutscene:getMarker("HW_spawn")
+            Game:addPartyMember("Honeywisp")
+            Game.world:spawnFollower("Honeywisp", { 2, "Honeywisp", false, 1, 1 })
+            local HW = cutscene:getCharacter("Honeywisp")
+            cutscene:detachFollowers()
+            HW.x = x
+            HW.y = y
+            cutscene:wait(cutscene:setAnimation(HW, { "battle/reappear", 1 / 12, false }))
+            cutscene:setAnimation(HW, { "walk", 1 / 12, false })
+            HW:setFacing("right")
+            SD:setFacing("left")
+            cutscene:text("* ...", "idle", "Honeywisp")
+            cutscene:text("* Okay guess we ain't explaining this this time...", "idle", "SD")
+            Assets.playSound("moss_fanfare")
+            cutscene:text("* Honeywisp joins your party!")
+            if Game:getFlag("Friend_name", false) then
+                cutscene:wait(1)
+                SD:setFacing("down")
+                cutscene:text("* Oh, and " .. Game.save_name .. "?", "idle", "SD")
+                cutscene:text("* Don't even attempt to try something...", "idle", "SD")
+            end
+            cutscene:wait(cutscene:attachFollowers())
+            HW:setFacing("down")
         end
-        cutscene:wait(cutscene:attachFollowers())
-        HW:setFacing("down")
     end
 }

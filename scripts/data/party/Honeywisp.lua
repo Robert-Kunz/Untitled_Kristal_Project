@@ -155,7 +155,44 @@ function character:canEquip(item, slot_type, slot_index)
     end
 end
 
-function character:getReaction(item, user)
+function character:onUnequip(item, item2)
+    return true
+end
+
+function character:onEquip(item, item2)
+    if not (item2 == nil) then
+        if item2.type == "armor" then
+        else
+            if item == nil then
+                if self:getArmor(1) == nil then
+                    if self:getArmor(2) == nil then
+                        self:setHealth(60)
+                    else
+                        self:setHealth(60 + self:getArmor(2):getStatBonus("health"))
+                    end
+                elseif self:getArmor(2) == nil then
+                    self:setHealth(60 + self:getArmor(1):getStatBonus("health"))
+                else
+                    self:setHealth(60 + self:getArmor(1):getStatBonus("health") +
+                        self:getArmor(2):getStatBonus("health"))
+                end
+            else
+                if self:getArmor(1) == nil then
+                    if self:getArmor(2) == nil then
+                        self:setHealth(50 + item:getStatBonus("health"))
+                    else
+                        self:setHealth(50 + item:getStatBonus("health") + self:getArmor(2):getStatBonus("health"))
+                    end
+                elseif self:getArmor(2) == nil then
+                    self:setHealth(50 + item:getStatBonus("health") + self:getArmor(1):getStatBonus("health"))
+                else
+                    self:setHealth(50 + item:getStatBonus("health") + self:getArmor(1):getStatBonus("health") +
+                        self:getArmor(2):getStatBonus("health"))
+                end
+            end
+        end
+    end
+    return true
 end
 
 return character

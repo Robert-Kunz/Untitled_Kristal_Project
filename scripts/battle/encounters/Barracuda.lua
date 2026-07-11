@@ -26,6 +26,7 @@ function Barracuda:onReturnToWorld()
     local presence = Kristal.getPresence()
     presence.state = "Testing Stuff"
     Kristal.setPresence(presence)
+    Game:setFlag("afterimage", false)
 end
 
 return Barracuda

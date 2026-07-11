@@ -4,7 +4,7 @@ return {
 
     ---@param cutscene BattleCutscene
     Greatest_Battle = function(cutscene, battler, enemy)
-        -- Open textbox and wait for completion
+        -- SD X_Act when not tired
         cutscene:text("* Sushi-dieb looked at Fifty in disgust.\n* Fifty only had a smirk to show.")
         cutscene:text("* This will be our legendary battle, SD!", "Smirk", "Fifty")
         cutscene:text("* Get ready!", "Cool", "Fifty")
@@ -34,38 +34,72 @@ return {
     end,
 
     Parody = function(cutscene, battler, enemy)
-        -- Open textbox and wait for completion
-        cutscene:text("* SD started to speak to Fifty")
-        cutscene:text("* Fifty...[wait:5] Please... \n* just accept you are the parody", "Tired", "SD")
-        cutscene:text("* BAHAHAHA, AS IF!", "Laughing", "Fifty")
-        cutscene:text("* He'll never get it...", "Hopeless", "SD")
-        cutscene:text("* Fifty is distracted!\n* He's unable to dodge this turn!")
+        -- Distract Act
+        if Game:getFlag("Solo_run", false) then
+            if Game:getFlag("SD_solo", false) then
+                cutscene:text("* SD started to speak to Fifty")
+                cutscene:text("* Fifty...[wait:5] Please... \n* just accept you are the parody", "Tired", "SD")
+                cutscene:text("* BAHAHAHA, AS IF!", "Laughing", "Fifty")
+                cutscene:text("* He'll never get it...", "Hopeless", "SD")
+                cutscene:text("* Fifty is distracted!\n* He's unable to dodge this turn!")
+            elseif Game:getFlag("HW_solo", false) then
+                cutscene:text("* So...", "idle", "Honeywisp")
+                cutscene:text("* Too scared to distract me?", "Smirk", "Fifty")
+                cutscene:text("* N-no...", "look_down", "Honeywisp")
+                cutscene:text("* I-I just don't know what to say...", "idle", "Honeywisp")
+                cutscene:text("* ...", "Happy", "Fifty")
+                cutscene:text("* ...", "look_down", "Honeywisp")
+                cutscene:text("* Fifty starts to laugh uncontrollably!")
+                cutscene:text("* Fifty is distracted!\n* He's unable to dodge this turn!")
+                cutscene:text("* As if that would help...", "annoyed", "soul")
+            end
+        else
+            cutscene:text("* SD started to speak to Fifty")
+            cutscene:text("* Fifty...[wait:5] Please... \n* just accept you are the parody", "Tired", "SD")
+            cutscene:text("* BAHAHAHA, AS IF!", "Laughing", "Fifty")
+            cutscene:text("* He'll never get it...", "Hopeless", "SD")
+            cutscene:text("* Fifty is distracted!\n* He's unable to dodge this turn!")
+        end
     end,
 
     Tired = function(cutscene, battler, enemy)
-        -- Open textbox and wait for completion
+        -- SD X_Act when tired
         cutscene:text("* Sushi-dieb looked at Fifty in disgust.\n* Fifty was just yawning.")
         cutscene:text("* heh... I'm so tired from this battle...", "Tired", "Fifty")
         cutscene:text("* But you wouldn't believe me!", "Annoyed", "Fifty")
         cutscene:text("* Isn't that right, Sushi-dieb?", "Smirk", "Fifty")
         cutscene:text("* Go to hell, Fifty", "Annoyed", "SD")
-        Game.battle.encounter:addEnemy("Test")
-        Game.battle.encounter:addEnemy("Test")
+        --Game.battle.encounter:addEnemy("Test")
+        --Game.battle.encounter:addEnemy("Test")
     end,
     Fish_Tired = function(cutscene, battler, enemy)
         -- Open textbox and wait for completion
-        cutscene:text("* Sushi-dieb looked at Fifty in disgust.\n* Fifty was just yawning.")
-        cutscene:text("* heh... I'm so tired from this battle...", "Tired", "Fifty")
-        cutscene:text("* But you wouldn't believe me!", "Annoyed", "Fifty")
-        cutscene:text("* Isn't that right, Sushi-dieb?", "Smirk", "Fifty")
-        cutscene:text("* Go to Fish, Fifty", "Annoyed", "SD")
-        cutscene:text("* I mean Fish", "idle", "SD")
-        cutscene:text("* Oh come on, why the censors.", "Confused", "SD")
+        if Game:getFlag("Solo_run", false) then
+            if Game:getFlag("SD_solo", false) then
+                cutscene:text("* Sushi-dieb looked at Fifty in disgust.\n* Fifty was just yawning.")
+                cutscene:text("* heh... I'm so tired from this battle...", "Tired", "Fifty")
+                cutscene:text("* But you wouldn't believe me!", "Annoyed", "Fifty")
+                cutscene:text("* Isn't that right, Sushi-dieb?", "Smirk", "Fifty")
+                cutscene:text("* Go to Fish, Fifty", "Annoyed", "SD")
+                cutscene:text("* I mean Fish", "idle", "SD")
+                cutscene:text("* Oh come on, why the censors.", "Confused", "SD")
+            elseif Game:getFlag("HW_solo", false) then
+                cutscene:text("* ???", "confused", "Honeywisp")
+            end
+        else
+            cutscene:text("* Sushi-dieb looked at Fifty in disgust.\n* Fifty was just yawning.")
+            cutscene:text("* heh... I'm so tired from this battle...", "Tired", "Fifty")
+            cutscene:text("* But you wouldn't believe me!", "Annoyed", "Fifty")
+            cutscene:text("* Isn't that right, Sushi-dieb?", "Smirk", "Fifty")
+            cutscene:text("* Go to Fish, Fifty", "Annoyed", "SD")
+            cutscene:text("* I mean Fish", "idle", "SD")
+            cutscene:text("* Oh come on, why the censors.", "Confused", "SD")
+        end
     end,
 
     Deletion = function(cutscene, battler, enemy)
         -- Open textbox and wait for completion
-        cutscene:text("* " + battler.chara:getName() + " cast Deletion!")
+        cutscene:text("* " .. battler.chara:getName() .. " cast Deletion!")
         cutscene:text("* [wait:10]...but!")
         cutscene:text("* BAHAHAHA, AS IF!", "Laughing", "Fifty")
         cutscene:text("* Trying to cheese ME?!", "Annoyed", "Fifty")

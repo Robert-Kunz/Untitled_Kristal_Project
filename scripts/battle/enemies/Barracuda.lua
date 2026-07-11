@@ -230,10 +230,10 @@ function Barracuda:onAct(battler, name)
     elseif name == "Standard" then --X-Action
         if battler.chara.id == "susie" then
             -- Wastes Susie's turn
-            return "* Susie tried to get Barracuda's attention.\n* Barracuda couldn't hear it just due to beats."
+            return "* Susie tried to get Barracuda's attention.\n* Barracuda didn't listen."
         elseif battler.chara.id == "Fifty" then
             -- Wastes Fifty's turn
-            return "* Fifty looked at Barracuda and taunted him.\n* Barracuda didn't hear it thanks to just beats."
+            return "* Fifty looked at Barracuda and taunted him.\n* Barracuda didn't listen."
         elseif battler.chara.id == "Honeywisp" then
             -- Heals Barracuda, though also weakens him for the turn
             self.HW_action = true

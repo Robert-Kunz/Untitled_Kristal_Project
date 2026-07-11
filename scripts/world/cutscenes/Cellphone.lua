@@ -14,7 +14,6 @@ return {
             cutscene:text("* Alright, Profanity is back on the menu, boys.", nil, nil)
             Game:setFlag("Profanity", true)
         elseif choicer == 2 then
-            -- still have to find more places where this toggle does something
             Game:setFlag("Profanity", false)
             cutscene:text("* You're boring, or professional.\n* No way to tell from this.", nil, nil)
         end

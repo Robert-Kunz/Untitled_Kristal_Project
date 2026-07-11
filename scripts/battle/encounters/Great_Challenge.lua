@@ -9,7 +9,7 @@ function Challenge:init()
     -- Battle music
     self.music = "battle/Barracuda"
     -- Enables the purple grid battle background
-    self.background = true
+    self.background = false
 
     -- Add the dummy enemy to the encounter
     self:addEnemy("Fifty")
@@ -30,7 +30,7 @@ function Challenge:onReturnToWorld()
     local presence = Kristal.getPresence()
     presence.state = "Testing Stuff"
     Kristal.setPresence(presence)
-    Game.world:startCutscene("Fifty", "Leave")
+    Game:setFlag("afterimage", false)
 end
 
 function Challenge:getNextWaves()

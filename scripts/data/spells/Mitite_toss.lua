@@ -40,11 +40,13 @@ function spell:onCast(user, target)
         user:hurt(math.huge)
     else
         for _, v in ipairs(Game.battle:getActiveEnemies()) do
-            v:hurt(20)
             v:inflictStatus("atknerf", 3, 5)
             v:inflictStatus("defnerf", 3, 2)
         end
         user:inflictStatus("mititeless", 3)
+        local x, y = user:getPosition()
+        -- This bit in comments would add a new Partymember into the frey
+        --Mod.libs["midbattleparty"]:addPartyBattler("kris", x + 70, y - 50, nil, nil, nil)
         user:hurt(math.huge)
     end
 end

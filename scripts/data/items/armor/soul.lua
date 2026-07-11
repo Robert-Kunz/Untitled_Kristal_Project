@@ -62,7 +62,7 @@ function item:onUnequip(character, replacement)
     if character:getName() == "HW" then
         Game.world.healthbar:react(character, { { 1, 0, 0 }, ("GET YOUR HANDS OF ME, HONEYWISP") })
     else
-        Game.world.healthbar:react(character, { { 1, 0, 0 }, ("GET YOUR HANDS OF ME, " + character:getName()) })
+        Game.world.healthbar:react(character, { { 1, 0, 0 }, ("GET YOUR HANDS OF ME, " .. character:getName()) })
     end
     return false
 end

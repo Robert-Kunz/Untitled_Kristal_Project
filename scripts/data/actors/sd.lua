@@ -25,7 +25,7 @@ function actor:init()
     self.default = "walk"
 
     -- Sound to play when this actor speaks (optional)
-    self.voice = nil
+    self.voice = "SD"
     -- Path to this actor's portrait for dialogue (optional)
     self.portrait_path = "face/SD"
     -- Offset position for this actor's portrait (optional)
@@ -47,6 +47,7 @@ function actor:init()
         ["battle/deletion"]      = { "battle/deletion", 0.1, false },
         ["battle/item"]          = { "battle/item", 1 / 12, false, next = "battle/item_end" },
         ["battle/spare"]         = { "battle/act", 1 / 15, false, next = "battle/idle" },
+        ["battle/dodge"]         = { "battle/dodge", 1 / 15, true, next = "battle/idle", duration = 1 },
 
         ["battle/attack_ready"]  = { "battle/attackready", 0.2, true },
         ["battle/act_ready"]     = { "battle/actready", 0.2, true },
@@ -75,6 +76,7 @@ function actor:init()
         ["walk/down"] = { 0, 0 },
         -- Battle offsets
         ["battle/idle"] = { -5, -1 },
+        ["battle/dodge"] = { -5, -1 },
 
         ["battle/attack"] = { -8, -6 },
         ["battle/attackready"] = { -8, -6 },

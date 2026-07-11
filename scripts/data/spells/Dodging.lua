@@ -17,10 +17,10 @@ function spell:init()
     self.cost = 90
 
     -- Target mode (ally, party, enemy, enemies, or none)
-    self.target = "ally"
+    self.target = "none"
 
     -- Tags that apply to this spell
-    self.tags = { "heal" }
+    self.tags = {}
     self.bheal = 0
 end
 
@@ -34,7 +34,7 @@ function spell:getCastMessage(user, target)
             "* I mean it's so easy even a Baby could beat this one-",
             "* Wait what do you mean this isn't a Sans variation and also not an enemy." }
     else
-        return "* " + user.chara:getName() + " prepares to dodge oncoming attacks!"
+        return "* " .. user.chara:getName() .. " prepares to dodge oncoming attacks!"
     end
 end
 

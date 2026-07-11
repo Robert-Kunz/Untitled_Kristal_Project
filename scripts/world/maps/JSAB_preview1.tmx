@@ -81,7 +81,7 @@
   </object>
   <object id="110" name="chest" x="219.391" y="541.828">
    <properties>
-    <property name="item" value="Nectar_Egg"/>
+    <property name="item" value="jsab_egg"/>
    </properties>
    <point/>
   </object>

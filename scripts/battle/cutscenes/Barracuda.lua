@@ -26,18 +26,42 @@ return {
             end
         end
         cutscene:text("* AND LEAVE!", "awakened", "Barracuda")
+        Game:setFlag("afterimage", true)
     end,
     Convince = function(cutscene, battler, enemy)
         -- Open textbox and wait for completion
         cutscene:text("* You make a stance infront of Barracuda")
-        cutscene:text("* Look, Barracuda, whatever you're trying to do\n* it won't work", "idle", "SD")
-        cutscene:text("* We both know how this will end...", "Tired", "SD")
-        cutscene:text("* So why don't you just stop?", "idle", "SD")
-        cutscene:text("* ...", "idle", "Barracuda")
-        cutscene:text("* YOU TELL LIES, KID", "angry", "Barracuda")
-        cutscene:text("* Listen here...", "Annoyed", "SD")
-        cutscene:text("* NO, YOU LISTEN TO ME", "angry", "Barracuda")
-        cutscene:text("* THIS AIN'T A RAP BATTLE, KID.\n* AND IT ISN'T THERAPY AS WELL", "idle", "Barracuda")
+        if Game:getFlag("Solo_run", false) then
+            if Game:getFlag("SD_solo", false) then
+                cutscene:text("* Look, Barracuda, whatever you're trying to do\n* it won't work", "idle", "SD")
+                cutscene:text("* We both know how this will end...", "Tired", "SD")
+                cutscene:text("* So why don't you just stop?", "idle", "SD")
+                cutscene:text("* ...", "idle", "Barracuda")
+                cutscene:text("* YOU TELL LIES, KID", "angry", "Barracuda")
+                cutscene:text("* Listen here...", "Annoyed", "SD")
+                cutscene:text("* NO, YOU LISTEN TO ME", "angry", "Barracuda")
+                cutscene:text("* THIS AIN'T A RAP BATTLE, KID.\n* AND IT ISN'T THERAPY AS WELL", "idle", "Barracuda")
+            elseif Game:getFlag("HW_solo", false) then
+                cutscene:text("* L-look, triangle... I-I don't...", "idle", "Honeywisp")
+                cutscene:text("* I don't w-want to fight!", "Scared", "Honeywisp")
+                cutscene:text("* So p-please just hear me out...", "idle", "Honeywisp")
+                cutscene:text("* ...", "idle", "Barracuda")
+                cutscene:text("* YOU SERIOUS?", "angry", "Barracuda")
+                cutscene:text("* ...", "look_down", "Honeywisp")
+                cutscene:text("* Y-yes...?", "idle", "Honeywisp")
+                cutscene:text("* ...", "idle", "Barracuda")
+                cutscene:text("* ...", "angry", "Barracuda")
+            end
+        else
+            cutscene:text("* Look, Barracuda, whatever you're trying to do\n* it won't work", "idle", "SD")
+            cutscene:text("* We both know how this will end...", "Tired", "SD")
+            cutscene:text("* So why don't you just stop?", "idle", "SD")
+            cutscene:text("* ...", "idle", "Barracuda")
+            cutscene:text("* YOU TELL LIES, KID", "angry", "Barracuda")
+            cutscene:text("* Listen here...", "Annoyed", "SD")
+            cutscene:text("* NO, YOU LISTEN TO ME", "angry", "Barracuda")
+            cutscene:text("* THIS AIN'T A RAP BATTLE, KID.\n* AND IT ISN'T THERAPY AS WELL", "idle", "Barracuda")
+        end
         cutscene:text("* I WILL NOT DISAPPOINT BOSS AGAIN.", "angry", "Barracuda")
         cutscene:text("* SO YOU TAKE YOUR EXCUSES...", "angry", "Barracuda")
         cutscene:wait(cutscene:setAnimation(enemy, { "awakening", 0.1, false }))
@@ -45,6 +69,7 @@ return {
         --cutscene:wait(3.5)
         cutscene:text("* AND LEAVE!", "awakened", "Barracuda")
         Game:setFlag("Convinced", true)
+        Game:setFlag("afterimage", true)
     end,
 
     Deletion = function(cutscene, battler, enemy)
@@ -68,6 +93,15 @@ return {
 
         -- get vessel position
         local vessel = Game.battle:getPartyBattler("SD")
+        if Game:getFlag("Solo_run", false) then
+            if Game:getFlag("SD_solo", false) then
+                vessel = Game.battle:getPartyBattler("SD")
+            elseif Game:getFlag("HW_solo", false) then
+                vessel = Game.battle:getPartyBattler("Honeywisp")
+            end
+        else
+            vessel = Game.battle:getPartyBattler("SD")
+        end
         local x, y = vessel.x + 14, vessel.y - 30
         local soul = Sprite("player/heart_dodge", x, y)
         -- get Barracuda's position
@@ -97,7 +131,15 @@ return {
         cutscene:wait(2)
         soul:setOrigin(0.5, 0.5)
         soul.layer = 1000
-        soul:setColor(1, 0, 0)
+        if Game:getFlag("Solo_run", false) then
+            if Game:getFlag("SD_solo", false) then
+                soul:setColor(1, 0, 0)
+            elseif Game:getFlag("HW_solo", false) then
+                soul:setColor(0, 1, 1)
+            end
+        else
+            soul:setColor(1, 0, 0)
+        end
 
         Game.stage:addChild(soul)
 
